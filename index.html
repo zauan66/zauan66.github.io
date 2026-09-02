@@ -7,6 +7,7 @@
 <title>zauan66</title>
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -17,76 +18,173 @@ body {
     font-family: Arial, sans-serif;
     min-height: 100vh;
     color: white;
+
     background:
         radial-gradient(circle at 50% 20%, #12366b, transparent 35%),
         linear-gradient(135deg, #020617, #071a38, #020617);
 }
 
-/* TELA INICIAL */
+
+/* =========================
+   TELA INICIAL
+========================= */
 
 .inicio {
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     text-align: center;
     padding: 20px;
 }
 
+
+/* NOME */
+
 .nome {
     font-size: clamp(55px, 12vw, 100px);
     font-weight: 900;
+
     letter-spacing: 2px;
+
     margin-bottom: 45px;
-    text-shadow: 0 0 30px rgba(70,160,255,0.35);
+
+    text-shadow:
+        0 0 30px rgba(70,160,255,0.35);
 }
 
-/* BOTÕES */
+
+/* =========================
+   BOTÕES NEON
+========================= */
 
 .botao {
-    width: 220px;
-    height: 120px;
+
+    position: relative;
+
+    width: 190px;
+    height: 70px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 24px;
-    border: 1px solid #3b82f6;
-
-    background: rgba(12,35,70,0.8);
+    border-radius: 18px;
 
     color: white;
     text-decoration: none;
 
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 
-    box-shadow:
-        0 12px 35px rgba(0,0,0,0.35),
-        inset 0 0 25px rgba(59,130,246,0.08);
-
-    transition: 0.25s;
+    background: #061225;
 
     margin: 8px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    box-shadow:
+        0 0 10px rgba(0,217,255,0.25),
+        inset 0 0 20px rgba(0,217,255,0.05);
+
+    transition: 0.25s;
 }
+
+
+/* LUZ AZUL QUE CORRE PELA BORDA */
+
+.botao::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180%;
+    height: 180%;
+
+    background: conic-gradient(
+        transparent 0deg,
+        transparent 250deg,
+        #00eaff 280deg,
+        #ffffff 300deg,
+        #00eaff 320deg,
+        transparent 350deg
+    );
+
+    animation: luzNeon 2.2s linear infinite;
+
+    z-index: -2;
+}
+
+
+/* PARTE INTERNA DO BOTÃO */
+
+.botao::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 2px;
+
+    border-radius: 16px;
+
+    background: #061225;
+
+    z-index: -1;
+}
+
+
+/* ANIMAÇÃO DA LUZ */
+
+@keyframes luzNeon {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* BRILHO */
 
 .botao:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 45px rgba(37,99,235,0.35);
+
+    transform: scale(1.04);
+
+    box-shadow:
+        0 0 15px #00d9ff,
+        0 0 35px rgba(0,217,255,0.5);
 }
 
-/* HISTÓRIA */
+
+/* =========================
+   HISTÓRIA
+========================= */
 
 #historia {
+
     display: none;
+
     min-height: 100vh;
+
     padding: 30px 20px;
 }
 
+
 .caixa {
+
     max-width: 850px;
+
     margin: 40px auto;
 
     padding: 35px;
@@ -94,52 +192,81 @@ body {
     background: rgba(5,15,32,0.92);
 
     border: 1px solid #2563eb;
+
     border-radius: 24px;
 }
 
+
 .caixa h2 {
+
     color: #60a5fa;
+
     font-size: 34px;
+
     margin-bottom: 25px;
 }
 
+
 .texto {
+
     color: #d5deea;
+
     font-size: 18px;
+
     line-height: 1.9;
 }
 
-/* MENÇÕES */
+
+/* =========================
+   MENÇÕES HONROSAS
+========================= */
 
 #mencoes {
+
     display: none;
+
     min-height: 100vh;
+
     padding: 50px 20px;
+
     text-align: center;
 }
 
+
 #mencoes h1 {
+
     color: #60a5fa;
+
     font-size: 36px;
+
     margin-bottom: 25px;
 }
 
+
 #mencoes p {
+
     color: #d5deea;
+
     font-size: 18px;
 }
 
-/* BOTÃO VOLTAR */
+
+/* =========================
+   BOTÃO VOLTAR
+========================= */
 
 .voltar {
+
     margin-top: 30px;
 
     padding: 12px 20px;
 
     border: 0;
+
     border-radius: 10px;
 
     background: #2563eb;
+
     color: white;
 
     font-weight: bold;
@@ -147,29 +274,45 @@ body {
     cursor: pointer;
 }
 
+
+/* =========================
+   CELULAR
+========================= */
+
 @media (max-width: 600px) {
 
     .botao {
-        width: 200px;
-        height: 105px;
+
+        width: 180px;
+        height: 65px;
+
+        font-size: 17px;
     }
 
     .caixa {
+
         padding: 25px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- INÍCIO -->
+
+<!-- =========================
+     INÍCIO
+========================= -->
 
 <section class="inicio" id="inicio">
 
     <div class="nome">
         zauan66
     </div>
+
 
     <a
         href="#historia"
@@ -178,6 +321,7 @@ body {
     >
         Minha história
     </a>
+
 
     <a
         href="#mencoes"
@@ -190,7 +334,10 @@ body {
 </section>
 
 
-<!-- HISTÓRIA -->
+
+<!-- =========================
+     HISTÓRIA
+========================= -->
 
 <section id="historia">
 
@@ -199,6 +346,7 @@ body {
         <h2>
             História de zauan66
         </h2>
+
 
         <div class="texto">
 
@@ -248,6 +396,7 @@ body {
 
         </div>
 
+
         <button
             class="voltar"
             onclick="voltar()"
@@ -260,13 +409,22 @@ body {
 </section>
 
 
-<!-- MENÇÕES HONROSAS -->
+
+<!-- =========================
+     MENÇÕES HONROSAS
+========================= -->
 
 <section id="mencoes">
 
-    <h1>Menções Honrosas</h1>
+    <h1>
+        Menções Honrosas
+    </h1>
 
-    <p> manutenção.</p>
+
+    <p>
+        manutenção.
+    </p>
+
 
     <button
         class="voltar"
@@ -278,39 +436,56 @@ body {
 </section>
 
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
+
 
 function abrirHistoria() {
 
     document.getElementById("inicio").style.display = "none";
+
     document.getElementById("mencoes").style.display = "none";
+
     document.getElementById("historia").style.display = "block";
 
 }
 
+
 function abrirMencoes() {
 
     document.getElementById("inicio").style.display = "none";
+
     document.getElementById("historia").style.display = "none";
+
     document.getElementById("mencoes").style.display = "block";
 
 }
 
+
 function voltar() {
 
     document.getElementById("historia").style.display = "none";
+
     document.getElementById("inicio").style.display = "flex";
 
 }
+
 
 function voltarMencoes() {
 
     document.getElementById("mencoes").style.display = "none";
+
     document.getElementById("inicio").style.display = "flex";
 
 }
 
+
 </script>
+
 
 </body>
 </html>
