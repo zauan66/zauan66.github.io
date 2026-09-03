@@ -72,11 +72,13 @@ body {
     align-items: center;
     justify-content: center;
 
+    border: none;
     border-radius: 18px;
 
     color: white;
     text-decoration: none;
 
+    font-family: Arial, sans-serif;
     font-size: 18px;
     font-weight: bold;
 
@@ -87,6 +89,8 @@ body {
     overflow: hidden;
 
     isolation: isolate;
+
+    cursor: pointer;
 
     box-shadow:
         0 0 10px rgba(0,217,255,0.25),
@@ -280,6 +284,8 @@ body {
     background: rgba(0, 0, 0, 0.30);
 
     z-index: 1;
+
+    pointer-events: none;
 }
 
 
@@ -345,6 +351,7 @@ body {
 
     color: white;
 
+    font-family: Arial, sans-serif;
     font-weight: bold;
 
     cursor: pointer;
@@ -406,22 +413,22 @@ body {
     </div>
 
 
-    <a
-        href="#historia"
+    <button
         class="botao"
+        type="button"
         onclick="abrirHistoria()"
     >
         Minha história
-    </a>
+    </button>
 
 
-    <a
-        href="#mencoes"
+    <button
         class="botao"
+        type="button"
         onclick="abrirMencoes()"
     >
         Menções Honrosas
-    </a>
+    </button>
 
 </section>
 
@@ -491,6 +498,7 @@ body {
 
         <button
             class="voltar"
+            type="button"
             onclick="voltar()"
         >
             ← Voltar
@@ -508,8 +516,6 @@ body {
 
 <section id="mencoes">
 
-    <!-- VÍDEO DE FUNDO -->
-
     <video
         autoplay
         muted
@@ -525,8 +531,6 @@ body {
     </video>
 
 
-    <!-- CONTEÚDO POR CIMA DO VÍDEO -->
-
     <div class="conteudo-mencoes">
 
         <h1>
@@ -536,6 +540,7 @@ body {
 
         <button
             class="voltar"
+            type="button"
             onclick="voltarMencoes()"
         >
             ← Voltar
@@ -553,9 +558,67 @@ body {
 
 <script>
 
-
 function abrirHistoria() {
 
     document.getElementById("inicio").style.display = "none";
 
-    document.get
+    document.getElementById("mencoes").style.display = "none";
+
+    document.getElementById("historia").style.display = "block";
+
+    window.scrollTo(0, 0);
+}
+
+
+function abrirMencoes() {
+
+    document.getElementById("inicio").style.display = "none";
+
+    document.getElementById("historia").style.display = "none";
+
+    const mencoes = document.getElementById("mencoes");
+
+    const video = mencoes.querySelector("video");
+
+    mencoes.style.display = "flex";
+
+    video.currentTime = 0;
+
+    video.play().catch(() => {});
+
+    window.scrollTo(0, 0);
+}
+
+
+function voltar() {
+
+    document.getElementById("historia").style.display = "none";
+
+    document.getElementById("inicio").style.display = "flex";
+
+    window.scrollTo(0, 0);
+}
+
+
+function voltarMencoes() {
+
+    const mencoes = document.getElementById("mencoes");
+
+    const video = mencoes.querySelector("video");
+
+    video.pause();
+
+    video.currentTime = 0;
+
+    mencoes.style.display = "none";
+
+    document.getElementById("inicio").style.display = "flex";
+
+    window.scrollTo(0, 0);
+}
+
+</script>
+
+
+</body>
+</html>
