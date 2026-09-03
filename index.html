@@ -14,6 +14,12 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     min-height: 100vh;
@@ -42,7 +48,9 @@ body {
 }
 
 
-/* NOME */
+/* =========================
+   NOME
+========================= */
 
 .nome {
     font-size: clamp(55px, 12vw, 100px);
@@ -62,7 +70,6 @@ body {
 ========================= */
 
 .botao {
-
     position: relative;
 
     width: 190px;
@@ -103,7 +110,6 @@ body {
 /* LUZ AZUL QUE CORRE PELA BORDA */
 
 .botao::before {
-
     content: "";
 
     position: absolute;
@@ -129,7 +135,6 @@ body {
 /* PARTE INTERNA DO BOTÃO */
 
 .botao::after {
-
     content: "";
 
     position: absolute;
@@ -147,7 +152,6 @@ body {
 /* ANIMAÇÃO DA LUZ */
 
 @keyframes luzNeon {
-
     from {
         transform: rotate(0deg);
     }
@@ -155,14 +159,12 @@ body {
     to {
         transform: rotate(360deg);
     }
-
 }
 
 
 /* BRILHO */
 
 .botao:hover {
-
     transform: scale(1.04);
 
     box-shadow:
@@ -176,7 +178,6 @@ body {
 ========================= */
 
 #historia {
-
     display: none;
 
     min-height: 100vh;
@@ -186,7 +187,6 @@ body {
 
 
 .caixa {
-
     max-width: 850px;
 
     margin: 40px auto;
@@ -202,7 +202,6 @@ body {
 
 
 .caixa h2 {
-
     color: #60a5fa;
 
     font-size: 34px;
@@ -212,7 +211,6 @@ body {
 
 
 .texto {
-
     color: #d5deea;
 
     font-size: 18px;
@@ -226,7 +224,6 @@ body {
 ========================= */
 
 #mencoes {
-
     display: none;
 
     position: relative;
@@ -246,13 +243,16 @@ body {
     justify-content: center;
 
     flex-direction: column;
+
+    background: #000;
 }
 
 
-/* VÍDEO */
+/* =========================
+   VÍDEO DE FUNDO
+========================= */
 
 #mencoes video {
-
     position: absolute;
 
     top: 0;
@@ -264,13 +264,16 @@ body {
     object-fit: cover;
 
     z-index: 0;
+
+    pointer-events: none;
 }
 
 
-/* CAMADA SOBRE O VÍDEO */
+/* =========================
+   CAMADA ESCURA
+========================= */
 
 #mencoes::before {
-
     content: "";
 
     position: absolute;
@@ -289,10 +292,11 @@ body {
 }
 
 
-/* CONTEÚDO NA FRENTE */
+/* =========================
+   CONTEÚDO NA FRENTE
+========================= */
 
 .conteudo-mencoes {
-
     position: relative;
 
     z-index: 2;
@@ -304,13 +308,16 @@ body {
     align-items: center;
 
     justify-content: center;
+
+    width: 100%;
 }
 
 
-/* TÍTULO */
+/* =========================
+   TÍTULO
+========================= */
 
 #mencoes h1 {
-
     color: #60a5fa;
 
     font-size: 36px;
@@ -323,22 +330,11 @@ body {
 }
 
 
-/* BOTÃO VOLTAR */
-
-#mencoes .voltar {
-
-    position: relative;
-
-    z-index: 3;
-}
-
-
 /* =========================
    BOTÃO VOLTAR
 ========================= */
 
 .voltar {
-
     margin-top: 30px;
 
     padding: 12px 20px;
@@ -352,16 +348,20 @@ body {
     color: white;
 
     font-family: Arial, sans-serif;
+
     font-weight: bold;
 
     cursor: pointer;
 
     transition: 0.25s;
+
+    position: relative;
+
+    z-index: 3;
 }
 
 
 .voltar:hover {
-
     transform: scale(1.05);
 
     box-shadow:
@@ -376,7 +376,6 @@ body {
 @media (max-width: 600px) {
 
     .botao {
-
         width: 180px;
         height: 65px;
 
@@ -384,12 +383,10 @@ body {
     }
 
     .caixa {
-
         padding: 25px;
     }
 
     #mencoes h1 {
-
         font-size: 30px;
     }
 
@@ -403,7 +400,7 @@ body {
 
 
 <!-- =========================
-     INÍCIO
+     TELA INICIAL
 ========================= -->
 
 <section class="inicio" id="inicio">
@@ -514,19 +511,28 @@ body {
      MENÇÕES HONROSAS
 ========================= -->
 
-<video
-    id="videoMencoes"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
->
-    <source src="video.mp4" type="video/mp4">
+<section id="mencoes">
 
-    Seu navegador não conseguiu carregar o vídeo.
-</video>
 
+    <!-- VÍDEO DE FUNDO -->
+
+    <video
+        id="videoMencoes"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+    >
+
+        <source src="video.mp4" type="video/mp4">
+
+        Seu navegador não conseguiu carregar o vídeo.
+
+    </video>
+
+
+    <!-- CONTEÚDO SOBRE O VÍDEO -->
 
     <div class="conteudo-mencoes">
 
@@ -545,6 +551,7 @@ body {
 
     </div>
 
+
 </section>
 
 
@@ -557,11 +564,13 @@ body {
 
 function abrirHistoria() {
 
-    document.getElementById("inicio").style.display = "none";
+    const inicio = document.getElementById("inicio");
+    const historia = document.getElementById("historia");
+    const mencoes = document.getElementById("mencoes");
 
-    document.getElementById("mencoes").style.display = "none";
-
-    document.getElementById("historia").style.display = "block";
+    inicio.style.display = "none";
+    mencoes.style.display = "none";
+    historia.style.display = "block";
 
     window.scrollTo(0, 0);
 }
@@ -569,19 +578,26 @@ function abrirHistoria() {
 
 function abrirMencoes() {
 
-    document.getElementById("inicio").style.display = "none";
-
-    document.getElementById("historia").style.display = "none";
-
+    const inicio = document.getElementById("inicio");
+    const historia = document.getElementById("historia");
     const mencoes = document.getElementById("mencoes");
+    const video = document.getElementById("videoMencoes");
 
-    const video = mencoes.querySelector("video");
+    inicio.style.display = "none";
+    historia.style.display = "none";
 
     mencoes.style.display = "flex";
 
     video.currentTime = 0;
 
-    video.play().catch(() => {});
+    const tentativa = video.play();
+
+    if (tentativa !== undefined) {
+        tentativa.catch(function() {
+            /* O navegador pode bloquear o autoplay.
+               O vídeo continua disponível para reprodução. */
+        });
+    }
 
     window.scrollTo(0, 0);
 }
@@ -589,9 +605,11 @@ function abrirMencoes() {
 
 function voltar() {
 
-    document.getElementById("historia").style.display = "none";
+    const historia = document.getElementById("historia");
+    const inicio = document.getElementById("inicio");
 
-    document.getElementById("inicio").style.display = "flex";
+    historia.style.display = "none";
+    inicio.style.display = "flex";
 
     window.scrollTo(0, 0);
 }
@@ -600,16 +618,15 @@ function voltar() {
 function voltarMencoes() {
 
     const mencoes = document.getElementById("mencoes");
-
-    const video = mencoes.querySelector("video");
+    const inicio = document.getElementById("inicio");
+    const video = document.getElementById("videoMencoes");
 
     video.pause();
 
     video.currentTime = 0;
 
     mencoes.style.display = "none";
-
-    document.getElementById("inicio").style.display = "flex";
+    inicio.style.display = "flex";
 
     window.scrollTo(0, 0);
 }
