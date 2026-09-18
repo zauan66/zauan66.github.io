@@ -2,18 +2,12 @@
 <html lang="pt-BR">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>zauan66</title>
 
 <style>
-
-/* =========================
-   CONFIGURAÇÕES GERAIS
-========================= */
 
 * {
     margin: 0;
@@ -61,8 +55,6 @@ body {
 }
 
 
-/* DISCO */
-
 .disco {
     width: 78px;
     height: 78px;
@@ -89,19 +81,13 @@ body {
     box-shadow:
         0 0 10px rgba(255,255,255,0.25),
         0 0 25px rgba(0,217,255,0.20);
-
-    transition: transform 0.2s;
 }
 
-
-/* DISCO GIRANDO */
 
 .disco.tocando {
     animation: girarDisco 2.5s linear infinite;
 }
 
-
-/* ANIMAÇÃO */
 
 @keyframes girarDisco {
 
@@ -115,8 +101,6 @@ body {
 
 }
 
-
-/* EFEITO AO PASSAR O MOUSE */
 
 .player-musica:hover .disco {
 
@@ -203,8 +187,6 @@ body {
 }
 
 
-/* LUZ AZUL QUE CORRE PELA BORDA */
-
 .botao::before {
     content: "";
 
@@ -228,8 +210,6 @@ body {
 }
 
 
-/* PARTE INTERNA DO BOTÃO */
-
 .botao::after {
     content: "";
 
@@ -245,8 +225,6 @@ body {
 }
 
 
-/* ANIMAÇÃO DA LUZ */
-
 @keyframes luzNeon {
 
     from {
@@ -260,8 +238,6 @@ body {
 }
 
 
-/* BRILHO */
-
 .botao:hover {
 
     transform: scale(1.04);
@@ -269,7 +245,6 @@ body {
     box-shadow:
         0 0 15px #00d9ff,
         0 0 35px rgba(0,217,255,0.5);
-
 }
 
 
@@ -475,7 +450,6 @@ body {
 
     box-shadow:
         0 0 15px rgba(37,99,235,0.8);
-
 }
 
 
@@ -504,8 +478,6 @@ body {
     }
 
 
-    /* DISCO MENOR NO CELULAR */
-
     .player-musica {
 
         top: 15px;
@@ -514,6 +486,7 @@ body {
         width: 65px;
         height: 65px;
     }
+
 
     .disco {
 
@@ -532,7 +505,7 @@ body {
 
 
 <!-- =========================
-     DISCO / MÚSICA
+     DISCO DE MÚSICA
 ========================= -->
 
 <div
@@ -549,11 +522,13 @@ body {
 </div>
 
 
-<!-- MÚSICA -->
+<!-- =========================
+     MÚSICA
+========================= -->
 
 <audio
     id="musica"
-    src="Golden%20Embers.mp3"
+    src="Golden%2520Embers.mp3"
     preload="auto"
 ></audio>
 
@@ -674,8 +649,6 @@ body {
 <section id="mencoes">
 
 
-    <!-- VÍDEO DE FUNDO -->
-
     <video
         id="videoMencoes"
         autoplay
@@ -694,8 +667,6 @@ body {
 
     </video>
 
-
-    <!-- CONTEÚDO SOBRE O VÍDEO -->
 
     <div class="conteudo-mencoes">
 
@@ -761,8 +732,6 @@ function toggleMusica() {
 }
 
 
-/* QUANDO A MÚSICA COMEÇAR */
-
 musica.addEventListener("play", function() {
 
     disco.classList.add("tocando");
@@ -770,16 +739,12 @@ musica.addEventListener("play", function() {
 });
 
 
-/* QUANDO A MÚSICA PAUSAR */
-
 musica.addEventListener("pause", function() {
 
     disco.classList.remove("tocando");
 
 });
 
-
-/* QUANDO A MÚSICA TERMINAR */
 
 musica.addEventListener("ended", function() {
 
@@ -856,11 +821,6 @@ function abrirMencoes() {
 
         tentativa.catch(function() {
 
-            /*
-            O navegador pode bloquear
-            o autoplay.
-            */
-
         });
 
     }
@@ -873,7 +833,7 @@ function abrirMencoes() {
 
 
 /* =========================
-   VOLTAR DA HISTÓRIA
+   VOLTAR
 ========================= */
 
 function voltar() {
