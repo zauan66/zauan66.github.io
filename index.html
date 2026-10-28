@@ -112,7 +112,7 @@ body {
         0 0 28px rgba(0,217,255,0.35);
 }
 
-/* PAINEL DE MÚSICAS */
+/* PAINEL DE SELEÇÃO DE MÚSICAS */
 .painel-musica {
     display: none;
     position: fixed;
@@ -120,10 +120,12 @@ body {
     right: 20px;
     z-index: 9998;
     width: min(310px, calc(100vw - 30px));
+    max-height: calc(100vh - 135px);
+    overflow-y: auto;
     padding: 20px;
     border: 1px solid #00d9ff;
     border-radius: 18px;
-    background: rgba(3, 12, 30, 0.97);
+    background: rgba(3,12,30,0.97);
     box-shadow:
         0 0 18px rgba(0,217,255,0.2),
         0 0 35px rgba(0,0,0,0.6);
@@ -151,7 +153,7 @@ body {
     border: none;
     background: transparent;
     color: white;
-    font-size: 25px;
+    font-size: 27px;
     cursor: pointer;
     padding: 0 5px;
 }
@@ -227,6 +229,7 @@ body {
     color: #fca5a5;
     font-size: 12px;
     line-height: 1.5;
+    overflow-wrap: anywhere;
     margin-top: 12px;
 }
 
@@ -376,7 +379,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.30);
+    background: rgba(0,0,0,0.30);
     z-index: 1;
     pointer-events: none;
 }
@@ -392,6 +395,7 @@ body {
     width: 100%;
 }
 
+/* TÍTULO */
 #mencoes h1 {
     color: #60a5fa;
     font-size: 36px;
@@ -453,6 +457,7 @@ body {
     .painel-musica {
         top: 90px;
         right: 15px;
+        max-height: calc(100vh - 110px);
     }
 }
 </style>
@@ -460,49 +465,67 @@ body {
 
 <body>
 
-<!-- DISCO DE MÚSICA -->
+<!-- DISCO: AGORA ABRE O PAINEL -->
 <div
     class="player-musica"
+    id="botaoDisco"
     onclick="alternarPainelMusica()"
     title="Abrir músicas"
     role="button"
     tabindex="0"
     aria-label="Abrir painel de músicas"
     aria-expanded="false"
-    id="botaoDisco"
 >
     <div class="disco" id="disco"></div>
 </div>
 
 <!-- PAINEL DE MÚSICAS -->
-<div class="painel-musica" id="painelMusica" aria-label="Painel de músicas">
+<div class="painel-musica" id="painelMusica">
 
     <div class="topo-painel">
         <h2>Minhas músicas</h2>
+
         <button
             class="fechar-painel"
+            type="button"
             onclick="fecharPainelMusica()"
             aria-label="Fechar painel"
-            type="button"
         >×</button>
     </div>
 
-    <div class="nome-musica" id="nomeMusica">
-        Golden Embers
-    </div>
+    <div class="nome-musica" id="nomeMusica">Golden Embers</div>
 
     <div class="lista-musicas" id="listaMusicas"></div>
 
     <div class="controles-musica">
-        <button class="controle" type="button" onclick="musicaAnterior()" aria-label="Música anterior">⏮</button>
-        <button class="controle controle-principal" type="button" id="botaoTocar" onclick="alternarReproducao()" aria-label="Tocar ou pausar">▶</button>
-        <button class="controle" type="button" onclick="proximaMusica()" aria-label="Próxima música">⏭</button>
+        <button
+            class="controle"
+            type="button"
+            onclick="musicaAnterior()"
+            aria-label="Música anterior"
+        >⏮</button>
+
+        <button
+            class="controle controle-principal"
+            type="button"
+            id="botaoTocar"
+            onclick="alternarReproducao()"
+            aria-label="Tocar ou pausar"
+        >▶</button>
+
+        <button
+            class="controle"
+            type="button"
+            onclick="proximaMusica()"
+            aria-label="Próxima música"
+        >⏭</button>
     </div>
 
     <p class="aviso-musica" id="avisoMusica"></p>
 </div>
 
-<!-- MÚSICA -->
+<!-- MÚSICA ORIGINAL -->
+<!-- %2520 é intencional: o nome real do arquivo contém %20 -->
 <audio
     id="musica"
     src="Golden%2520Embers.mp3"
@@ -524,7 +547,7 @@ body {
 
 </section>
 
-<!-- HISTÓRIA -->
+<!-- HISTÓRIA ORIGINAL -->
 <section id="historia">
 
     <div class="caixa">
@@ -532,7 +555,6 @@ body {
         <h2>História de zauan66</h2>
 
         <div class="texto">
-
             <br><br>
 
             A História de zauan66
@@ -576,7 +598,6 @@ body {
             O antigo reinado havia terminado.
 
             Mas a história de Zauan 66 estava apenas começando.
-
         </div>
 
         <button class="voltar" type="button" onclick="voltar()">
@@ -586,7 +607,7 @@ body {
     </div>
 </section>
 
-<!-- MENÇÕES HONROSAS -->
+<!-- MENÇÕES HONROSAS E VÍDEO ORIGINAL -->
 <section id="mencoes">
 
     <video
@@ -602,19 +623,17 @@ body {
     </video>
 
     <div class="conteudo-mencoes">
-
         <h1>Menções Honrosas</h1>
 
         <button class="voltar" type="button" onclick="voltarMencoes()">
             ← Voltar
         </button>
-
     </div>
 </section>
 
 <script>
 /* =========================
-   MÚSICAS
+   SISTEMA DE MÚSICA
 ========================= */
 
 const musica = document.getElementById("musica");
@@ -627,8 +646,12 @@ const botaoTocar = document.getElementById("botaoTocar");
 const avisoMusica = document.getElementById("avisoMusica");
 
 /*
-  Os caminhos dos arquivos ficam nesta lista.
-  Golden Embers mantém o caminho original enviado.
+  IMPORTANTE:
+  Golden%2520Embers.mp3 corresponde ao nome real
+  Golden%20Embers.mp3, que contém %20 literal.
+
+  A segunda música mantém o caminho com espaço
+  codificado como %20.
 */
 const musicas = [
     {
@@ -692,6 +715,7 @@ function selecionarMusica(indice, tocar) {
     }
 
     indiceMusica = indice;
+
     musica.pause();
     musica.src = musicas[indiceMusica].arquivo;
     musica.load();
@@ -720,7 +744,7 @@ function reproduzirMusica() {
             botaoTocar.textContent = "▶";
 
             mostrarAviso(
-                "Não foi possível tocar este arquivo. Confira se o nome do MP3 está correto e se ele está na mesma pasta do site."
+                "Não foi possível tocar esta música. Verifique se o arquivo existe, se o nome está correto e se está na mesma pasta do index.html."
             );
         });
 }
@@ -799,22 +823,4 @@ function abrirHistoria() {
 
 /* =========================
    ABRIR MENÇÕES
-========================= */
-
-function abrirMencoes() {
-    const inicio = document.getElementById("inicio");
-    const historia = document.getElementById("historia");
-    const mencoes = document.getElementById("mencoes");
-    const video = document.getElementById("videoMencoes");
-
-    inicio.style.display = "none";
-    historia.style.display = "none";
-    mencoes.style.display = "flex";
-
-    fecharPainelMusica();
-
-    video.currentTime = 0;
-
-    const tentativa = video.play();
-
-    if (tentativa !== undefi
+=======
