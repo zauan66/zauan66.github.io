@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,7 +9,6 @@
 <title>zauan66</title>
 
 <style>
-
 * {
     margin: 0;
     padding: 0;
@@ -31,40 +31,27 @@ body {
         linear-gradient(135deg, #020617, #071a38, #020617);
 }
 
-
 /* =========================
    DISCO DE MÚSICA
 ========================= */
 
 .player-musica {
     position: fixed;
-
     top: 20px;
     right: 20px;
-
     width: 82px;
     height: 82px;
-
     z-index: 9999;
-
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-
-/* =========================
-   DISCO
-========================= */
-
 .disco {
     width: 78px;
     height: 78px;
-
     border-radius: 50%;
-
     position: relative;
 
     background:
@@ -83,19 +70,10 @@ body {
     overflow: hidden;
 }
 
-
-/* =========================
-   BRILHO DO VINIL
-========================= */
-
 .disco::before {
-
     content: "";
-
     position: absolute;
-
     inset: 0;
-
     border-radius: 50%;
 
     background:
@@ -111,25 +89,14 @@ body {
     pointer-events: none;
 }
 
-
-/* =========================
-   CENTRO DO DISCO
-========================= */
-
 .disco::after {
-
     content: "";
-
     position: absolute;
-
     width: 20px;
     height: 20px;
-
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
-
     border-radius: 50%;
 
     background:
@@ -141,46 +108,154 @@ body {
             #050505 100%
         );
 
-    box-shadow:
-        0 0 4px rgba(0,0,0,0.9);
+    box-shadow: 0 0 4px rgba(0,0,0,0.9);
 }
-
-
-/* =========================
-   DISCO GIRANDO
-========================= */
 
 .disco.tocando {
-
-    animation:
-        girarDisco 2.5s linear infinite;
+    animation: girarDisco 2.5s linear infinite;
 }
-
 
 @keyframes girarDisco {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-
-/* =========================
-   EFEITO AO PASSAR O MOUSE
-========================= */
-
 .player-musica:hover .disco {
-
     box-shadow:
         0 0 12px rgba(255,255,255,0.3),
         0 0 28px rgba(0,217,255,0.35);
 }
 
+/* =========================
+   PAINEL DE MÚSICA
+========================= */
+
+.painel-musica {
+    display: none;
+    position: fixed;
+    top: 115px;
+    right: 20px;
+    width: 290px;
+    max-width: calc(100vw - 30px);
+    padding: 20px;
+
+    background: rgba(3,12,30,0.97);
+    border: 1px solid #00d9ff;
+    border-radius: 18px;
+
+    box-shadow: 0 0 25px rgba(0,217,255,0.25);
+
+    z-index: 9998;
+    color: white;
+}
+
+.painel-musica.aberto {
+    display: block;
+    animation: aparecerPainel 0.2s ease;
+}
+
+@keyframes aparecerPainel {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cabecalho-musica {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.cabecalho-musica h3 {
+    color: #60a5fa;
+    font-size: 19px;
+}
+
+.fechar-painel {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.nome-musica {
+    color: #d5deea;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.lista-musicas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.item-musica {
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+
+    border: 1px solid #18365b;
+    border-radius: 10px;
+    background: #071a38;
+    color: white;
+
+    cursor: pointer;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.item-musica:hover,
+.item-musica.selecionada {
+    border-color: #00d9ff;
+    background: #102b4c;
+    box-shadow: 0 0 10px rgba(0,217,255,0.15);
+}
+
+.controles-musica {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.controles-musica button {
+    width: 43px;
+    height: 40px;
+
+    border: 1px solid #00d9ff;
+    border-radius: 10px;
+    background: #061225;
+    color: white;
+
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.controles-musica button:hover {
+    background: #12366b;
+    box-shadow: 0 0 12px rgba(0,217,255,0.3);
+}
+
+.erro-musica {
+    color: #fca5a5;
+    font-size: 12px;
+    margin-top: 12px;
+    line-height: 1.5;
+}
 
 /* =========================
    TELA INICIAL
@@ -188,33 +263,22 @@ body {
 
 .inicio {
     min-height: 100vh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     text-align: center;
     padding: 20px;
 }
 
-
-/* =========================
-   NOME
-========================= */
-
 .nome {
     font-size: clamp(55px, 12vw, 100px);
     font-weight: 900;
-
     letter-spacing: 2px;
-
     margin-bottom: 45px;
 
-    text-shadow:
-        0 0 30px rgba(70,160,255,0.35);
+    text-shadow: 0 0 30px rgba(70,160,255,0.35);
 }
-
 
 /* =========================
    BOTÕES NEON
@@ -222,7 +286,6 @@ body {
 
 .botao {
     position: relative;
-
     width: 190px;
     height: 70px;
 
@@ -235,19 +298,14 @@ body {
 
     color: white;
     text-decoration: none;
-
     font-family: Arial, sans-serif;
     font-size: 18px;
     font-weight: bold;
 
     background: #061225;
-
     margin: 8px;
-
     overflow: hidden;
-
     isolation: isolate;
-
     cursor: pointer;
 
     box-shadow:
@@ -259,9 +317,7 @@ body {
 
 .botao::before {
     content: "";
-
     position: absolute;
-
     width: 180%;
     height: 180%;
 
@@ -275,38 +331,24 @@ body {
     );
 
     animation: luzNeon 2.2s linear infinite;
-
     z-index: -2;
 }
 
 .botao::after {
     content: "";
-
     position: absolute;
-
     inset: 2px;
-
     border-radius: 16px;
-
     background: #061225;
-
     z-index: -1;
 }
 
 @keyframes luzNeon {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .botao:hover {
-
     transform: scale(1.04);
 
     box-shadow:
@@ -314,160 +356,96 @@ body {
         0 0 35px rgba(0,217,255,0.5);
 }
 
-
 /* =========================
    HISTÓRIA
 ========================= */
 
 #historia {
     display: none;
-
     min-height: 100vh;
-
     padding: 30px 20px;
 }
 
 .caixa {
     max-width: 850px;
-
     margin: 40px auto;
-
     padding: 35px;
 
     background: rgba(5,15,32,0.92);
-
     border: 1px solid #2563eb;
-
     border-radius: 24px;
 }
 
 .caixa h2 {
-
     color: #60a5fa;
-
     font-size: 34px;
-
     margin-bottom: 25px;
 }
 
 .texto {
-
     color: #d5deea;
-
     font-size: 18px;
-
     line-height: 1.9;
 }
-
 
 /* =========================
    MENÇÕES HONROSAS
 ========================= */
 
 #mencoes {
-
     display: none;
-
     position: relative;
-
     width: 100%;
-
     min-height: 100vh;
-
     padding: 50px 20px;
 
     text-align: center;
-
     overflow: hidden;
-
     align-items: center;
-
     justify-content: center;
-
     flex-direction: column;
 
     background: #000;
 }
 
-
-/* =========================
-   VÍDEO DE FUNDO
-========================= */
-
 #mencoes video {
-
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     z-index: 0;
-
     pointer-events: none;
 }
-
-
-/* =========================
-   CAMADA ESCURA
-========================= */
 
 #mencoes::before {
-
     content: "";
-
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
 
-    background: rgba(0, 0, 0, 0.30);
-
+    background: rgba(0,0,0,0.30);
     z-index: 1;
-
     pointer-events: none;
 }
 
-
-/* =========================
-   CONTEÚDO NA FRENTE
-========================= */
-
 .conteudo-mencoes {
-
     position: relative;
-
     z-index: 2;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     width: 100%;
 }
 
-
-/* =========================
-   TÍTULO
-========================= */
-
 #mencoes h1 {
-
     color: #60a5fa;
-
     font-size: 36px;
-
     margin-bottom: 25px;
 
     text-shadow:
@@ -475,94 +453,81 @@ body {
         0 0 25px rgba(96,165,250,0.5);
 }
 
-
 /* =========================
    BOTÃO VOLTAR
 ========================= */
 
 .voltar {
-
     margin-top: 30px;
-
     padding: 12px 20px;
 
     border: 0;
-
     border-radius: 10px;
-
     background: #2563eb;
-
     color: white;
 
     font-family: Arial, sans-serif;
-
     font-weight: bold;
-
     cursor: pointer;
-
     transition: 0.25s;
 
     position: relative;
-
     z-index: 3;
 }
 
 .voltar:hover {
-
     transform: scale(1.05);
-
-    box-shadow:
-        0 0 15px rgba(37,99,235,0.8);
+    box-shadow: 0 0 15px rgba(37,99,235,0.8);
 }
-
 
 /* =========================
    CELULAR
 ========================= */
 
 @media (max-width: 600px) {
-
     .botao {
-
         width: 180px;
         height: 65px;
-
         font-size: 17px;
     }
 
     .caixa {
-
         padding: 25px;
     }
 
-    #mencoes h1 {
+    .caixa h2 {
+        font-size: 28px;
+    }
 
+    .texto {
+        font-size: 16px;
+    }
+
+    #mencoes h1 {
         font-size: 30px;
     }
 
     .player-musica {
-
         top: 15px;
         right: 15px;
-
         width: 65px;
         height: 65px;
     }
 
     .disco {
-
         width: 65px;
         height: 65px;
     }
 
+    .painel-musica {
+        top: 90px;
+        right: 15px;
+    }
 }
-
 </style>
-
 </head>
 
 <body>
-
 
 <!-- =========================
      DISCO DE MÚSICA
@@ -570,29 +535,81 @@ body {
 
 <div
     class="player-musica"
-    onclick="toggleMusica()"
-    title="Tocar / Pausar música"
+    onclick="abrirFecharPainel()"
+    title="Abrir reprodutor de música"
+    role="button"
+    tabindex="0"
+    aria-label="Abrir reprodutor de música"
+    aria-controls="painelMusica"
+    aria-expanded="false"
+    onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); abrirFecharPainel(); }"
 >
-
-    <div
-        class="disco"
-        id="disco"
-    ></div>
-
+    <div class="disco" id="disco"></div>
 </div>
 
-
 <!-- =========================
-     MÚSICA
+     ÁUDIO
 ========================= -->
 
-<audio
-    id="musica"
-    src="Golden%2520Embers.mp3"
-    preload="auto"
-></audio>
+<audio id="musica" preload="auto"></audio>
 
+<!-- =========================
+     PAINEL DE MÚSICA
+========================= -->
 
+<div
+    class="painel-musica"
+    id="painelMusica"
+    aria-label="Reprodutor de música"
+>
+    <div class="cabecalho-musica">
+        <h3>♫ Minhas músicas</h3>
+
+        <button
+            class="fechar-painel"
+            type="button"
+            onclick="abrirFecharPainel()"
+            aria-label="Fechar painel"
+        >×</button>
+    </div>
+
+    <div class="nome-musica" id="nomeMusica">
+        Escolha uma música abaixo.
+    </div>
+
+    <div class="lista-musicas" id="listaMusicas"></div>
+
+    <div class="controles-musica">
+        <button
+            type="button"
+            onclick="musicaAnterior()"
+            aria-label="Música anterior"
+            title="Música anterior"
+        >⏮</button>
+
+        <button
+            type="button"
+            onclick="reproduzirPausar()"
+            id="botaoPlay"
+            aria-label="Reproduzir"
+            title="Reproduzir ou pausar"
+        >▶</button>
+
+        <button
+            type="button"
+            onclick="proximaMusica()"
+            aria-label="Próxima música"
+            title="Próxima música"
+        >⏭</button>
+    </div>
+
+    <div
+        class="erro-musica"
+        id="erroMusica"
+        role="status"
+        aria-live="polite"
+    ></div>
+</div>
 
 <!-- =========================
      TELA INICIAL
@@ -600,10 +617,7 @@ body {
 
 <section class="inicio" id="inicio">
 
-    <div class="nome">
-        zauan66
-    </div>
-
+    <div class="nome">zauan66</div>
 
     <button
         class="botao"
@@ -612,7 +626,6 @@ body {
     >
         Minha história
     </button>
-
 
     <button
         class="botao"
@@ -624,8 +637,6 @@ body {
 
 </section>
 
-
-
 <!-- =========================
      HISTÓRIA
 ========================= -->
@@ -634,10 +645,7 @@ body {
 
     <div class="caixa">
 
-        <h2>
-            História de zauan66
-        </h2>
-
+        <h2>História de zauan66</h2>
 
         <div class="texto">
 
@@ -687,7 +695,6 @@ body {
 
         </div>
 
-
         <button
             class="voltar"
             type="button"
@@ -699,8 +706,6 @@ body {
     </div>
 
 </section>
-
-
 
 <!-- =========================
      MENÇÕES HONROSAS
@@ -716,23 +721,13 @@ body {
         playsinline
         preload="auto"
     >
-
-        <source
-            src="video.mp4"
-            type="video/mp4"
-        >
-
+        <source src="video.mp4" type="video/mp4">
         Seu navegador não conseguiu carregar o vídeo.
-
     </video>
-
 
     <div class="conteudo-mencoes">
 
-        <h1>
-            Menções Honrosas
-        </h1>
-
+        <h1>Menções Honrosas</h1>
 
         <button
             class="voltar"
@@ -746,221 +741,168 @@ body {
 
 </section>
 
-
-
 <!-- =========================
      JAVASCRIPT
 ========================= -->
 
 <script>
 
-
 /* =========================
-   MÚSICA
+   CONFIGURAÇÃO DAS MÚSICAS
 ========================= */
 
-const musica =
-    document.getElementById("musica");
+/*
+   Coloque os arquivos MP3 na mesma pasta do index.html.
+   Para adicionar músicas, acrescente novos objetos à lista.
+*/
 
-const disco =
-    document.getElementById("disco");
-
-
-function toggleMusica() {
-
-    if (musica.paused) {
-
-        musica.play()
-            .then(function() {
-
-                disco.classList.add("tocando");
-
-            })
-            .catch(function() {
-
-                console.log(
-                    "Não foi possível iniciar a música."
-                );
-
-            });
-
-    } else {
-
-        musica.pause();
-
-        disco.classList.remove("tocando");
-
+const musicas = [
+    {
+        nome: "Golden Embers",
+        arquivo: "Golden%20Embers.mp3"
+    },
+    {
+        nome: "Illusione perfetta",
+        arquivo: "Illusione%20perfetta.mp3"
     }
+];
+
+/* =========================
+   ELEMENTOS
+========================= */
+
+const musica = document.getElementById("musica");
+const disco = document.getElementById("disco");
+const painelMusica = document.getElementById("painelMusica");
+const listaMusicas = document.getElementById("listaMusicas");
+const nomeMusica = document.getElementById("nomeMusica");
+const botaoPlay = document.getElementById("botaoPlay");
+const erroMusica = document.getElementById("erroMusica");
+const botaoDisco = document.querySelector(".player-musica");
+
+let indiceMusica = 0;
+let musicaSelecionada = false;
+
+/* =========================
+   ABRIR E FECHAR O PAINEL
+========================= */
+
+function abrirFecharPainel() {
+
+    const aberto = painelMusica.classList.toggle("aberto");
+
+    botaoDisco.setAttribute("aria-expanded", aberto);
 
 }
 
-
-musica.addEventListener(
-    "play",
-    function() {
-
-        disco.classList.add("tocando");
-
-    }
-);
-
-
-musica.addEventListener(
-    "pause",
-    function() {
-
-        disco.classList.remove("tocando");
-
-    }
-);
-
-
-musica.addEventListener(
-    "ended",
-    function() {
-
-        disco.classList.remove("tocando");
-
-        musica.currentTime = 0;
-
-    }
-);
-
-
-
 /* =========================
-   ABRIR HISTÓRIA
+   MONTAR LISTA DE MÚSICAS
 ========================= */
 
-function abrirHistoria() {
+function montarListaMusicas() {
 
-    const inicio =
-        document.getElementById("inicio");
+    listaMusicas.innerHTML = "";
 
-    const historia =
-        document.getElementById("historia");
+    musicas.forEach(function(item, indice) {
 
-    const mencoes =
-        document.getElementById("mencoes");
+        const botao = document.createElement("button");
 
+        botao.type = "button";
+        botao.className = "item-musica";
+        botao.textContent = item.nome;
 
-    inicio.style.display = "none";
-
-    mencoes.style.display = "none";
-
-    historia.style.display = "block";
-
-
-    window.scrollTo(0, 0);
-
-}
-
-
-
-/* =========================
-   ABRIR MENÇÕES
-========================= */
-
-function abrirMencoes() {
-
-    const inicio =
-        document.getElementById("inicio");
-
-    const historia =
-        document.getElementById("historia");
-
-    const mencoes =
-        document.getElementById("mencoes");
-
-    const video =
-        document.getElementById("videoMencoes");
-
-
-    inicio.style.display = "none";
-
-    historia.style.display = "none";
-
-    mencoes.style.display = "flex";
-
-
-    video.currentTime = 0;
-
-
-    const tentativa =
-        video.play();
-
-
-    if (tentativa !== undefined) {
-
-        tentativa.catch(function() {
-
+        botao.addEventListener("click", function() {
+            selecionarMusica(indice);
         });
 
+        listaMusicas.appendChild(botao);
+
+    });
+
+    atualizarPainel();
+
+}
+
+/* =========================
+   ATUALIZAR PAINEL
+========================= */
+
+function atualizarPainel() {
+
+    if (!musicas.length) {
+        nomeMusica.textContent = "Nenhuma música cadastrada.";
+        botaoPlay.textContent = "▶";
+        return;
     }
 
+    nomeMusica.textContent = musicaSelecionada
+        ? musicas[indiceMusica].nome
+        : "Escolha uma música abaixo.";
 
-    window.scrollTo(0, 0);
+    botaoPlay.textContent = musica.paused ? "▶" : "Ⅱ";
+
+    botaoPlay.setAttribute(
+        "aria-label",
+        musica.paused ? "Reproduzir" : "Pausar"
+    );
+
+    const botoes =
+        listaMusicas.querySelectorAll(".item-musica");
+
+    botoes.forEach(function(botao, indice) {
+
+        botao.classList.toggle(
+            "selecionada",
+            musicaSelecionada && indice === indiceMusica
+        );
+
+        botao.textContent =
+            musicaSelecionada && indice === indiceMusica
+                ? "♫ " + musicas[indice].nome
+                : musicas[indice].nome;
+
+    });
 
 }
-
-
 
 /* =========================
-   VOLTAR
+   SELECIONAR MÚSICA
 ========================= */
 
-function voltar() {
+function selecionarMusica(indice) {
 
-    const historia =
-        document.getElementById("historia");
+    if (!musicas.length) return;
 
-    const inicio =
-        document.getElementById("inicio");
+    indiceMusica = indice;
+    musicaSelecionada = true;
 
+    erroMusica.textContent = "";
 
-    historia.style.display = "none";
+    musica.src = musicas[indiceMusica].arquivo;
+    musica.load();
 
-    inicio.style.display = "flex";
+    atualizarPainel();
 
+    musica.play().catch(function() {
 
-    window.scrollTo(0, 0);
+        erroMusica.textContent =
+            "Não foi possível reproduzir. Confira se o arquivo MP3 existe e tente novamente.";
+
+        atualizarPainel();
+
+    });
 
 }
-
-
 
 /* =========================
-   VOLTAR DAS MENÇÕES
+   REPRODUZIR OU PAUSAR
 ========================= */
 
-function voltarMencoes() {
+function reproduzirPausar() {
 
-    const mencoes =
-        document.getElementById("mencoes");
+    if (!musicas.length) return;
 
-    const inicio =
-        document.getElementById("inicio");
+    erroMusica.textContent = "";
 
-    const video =
-        document.getElementById("videoMencoes");
-
-
-    video.pause();
-
-    video.currentTime = 0;
-
-
-    mencoes.style.display = "none";
-
-    inicio.style.display = "flex";
-
-
-    window.scrollTo(0, 0);
-
-}
-
-</script>
-
-</body>
-
-</html>
+    if (!musicaSelecionada) {
+        selecion
