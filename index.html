@@ -28,7 +28,9 @@ body {
         linear-gradient(135deg, #020617, #071a38, #020617);
 }
 
-/* DISCO DE MÚSICA */
+/* =========================
+   DISCO DE MÚSICA
+========================= */
 
 .player-musica {
     position: fixed;
@@ -122,7 +124,9 @@ body {
         0 0 28px rgba(0,217,255,0.35);
 }
 
-/* MENU DE MÚSICA */
+/* =========================
+   MENU DE MÚSICA
+========================= */
 
 .menu-musica {
     display: none;
@@ -188,7 +192,15 @@ body {
 
 .item-musica.secreta {
     border-color: #f59e0b;
-    color: #fde68a;
+    color: #fef08a;
+    background: rgba(245, 158, 11, 0.15);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    animation: pulsarSecreto 1.5s infinite alternate;
+}
+
+@keyframes pulsarSecreto {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.02); }
 }
 
 .controles-musica {
@@ -233,7 +245,9 @@ body {
     box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
-/* POPUP SECRETO (ESTILO DO VÍDEO) */
+/* =========================
+   POPUP SECRETO (ESTILO DO MEME)
+========================= */
 
 .dialogo-secreto {
     display: none;
@@ -324,7 +338,9 @@ body {
     border-color: #0078d7;
 }
 
-/* TELA INICIAL */
+/* =========================
+   TELA INICIAL
+========================= */
 
 .inicio {
     min-height: 100vh;
@@ -342,9 +358,22 @@ body {
     letter-spacing: 2px;
     margin-bottom: 45px;
     text-shadow: 0 0 30px rgba(70,160,255,0.35);
+    user-select: none;
+    cursor: pointer;
+    transition: transform 0.2s, text-shadow 0.3s;
 }
 
-/* BOTÕES NEON */
+.nome:active {
+    transform: scale(0.97);
+}
+
+.nome.desbloqueado {
+    text-shadow: 0 0 35px rgba(245, 158, 11, 0.8), 0 0 60px rgba(245, 158, 11, 0.4);
+}
+
+/* =========================
+   BOTÕES NEON
+========================= */
 
 .botao {
     position: relative;
@@ -413,7 +442,9 @@ body {
         0 0 35px rgba(0,217,255,0.5);
 }
 
-/* HISTÓRIA */
+/* =========================
+   HISTÓRIA
+========================= */
 
 #historia {
     display: none;
@@ -442,7 +473,9 @@ body {
     line-height: 1.9;
 }
 
-/* MENÇÕES HONROSAS */
+/* =========================
+   MENÇÕES HONROSAS
+========================= */
 
 #mencoes {
     display: none;
@@ -496,332 +529,4 @@ body {
     font-size: 36px;
     margin-bottom: 25px;
     text-shadow:
-        0 0 10px rgba(96,165,250,0.8),
-        0 0 25px rgba(96,165,250,0.5);
-}
-
-.voltar {
-    margin-top: 30px;
-    padding: 12px 20px;
-    border: 0;
-    border-radius: 10px;
-    background: #2563eb;
-    color: white;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.25s;
-    position: relative;
-    z-index: 3;
-}
-
-.voltar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(37,99,235,0.8);
-}
-
-/* CELULAR */
-
-@media (max-width: 600px) {
-    .botao {
-        width: 180px;
-        height: 65px;
-        font-size: 17px;
-    }
-
-    .caixa {
-        padding: 25px;
-    }
-
-    #mencoes h1 {
-        font-size: 30px;
-    }
-
-    .player-musica {
-        top: 15px;
-        right: 15px;
-        width: 65px;
-        height: 65px;
-    }
-
-    .disco {
-        width: 65px;
-        height: 65px;
-    }
-
-    .menu-musica {
-        top: 90px;
-        right: 15px;
-        left: 15px;
-        width: auto;
-    }
-}
-
-</style>
-</head>
-<body>
-
-<!-- DISCO DE MÚSICA -->
-<div
-    class="player-musica"
-    onclick="alternarMenuMusica()"
-    title="Abrir opções de música"
->
-    <div class="disco" id="disco"></div>
-</div>
-
-<!-- MENU DE MÚSICA -->
-<div class="menu-musica" id="menuMusica">
-    <h3>Músicas</h3>
-
-    <div class="lista-musicas" id="listaMusicas"></div>
-
-    <div class="controles-musica">
-        <button class="botao-musica" type="button" onclick="tocarOuPausar()">
-            Tocar / Pausar
-        </button>
-    </div>
-
-    <button class="botao-fechar" type="button" onclick="fecharMenuMusica()">
-        Fechar
-    </button>
-</div>
-
-<!-- POPUP SECRETO (ESTILO DO VÍDEO) -->
-<div class="dialogo-secreto" id="dialogoSecreto">
-    <div class="dialogo-topo">
-        <span>around the world</span>
-        <button class="dialogo-fechar-x" type="button" onclick="fecharDialogoSecreto()">✕</button>
-    </div>
-    <div class="dialogo-corpo">
-        <div class="dialogo-icone" id="dialogoIcone">🐥</div>
-        <div class="dialogo-texto" id="dialogoTexto">...</div>
-    </div>
-    <div class="dialogo-rodape">
-        <button class="dialogo-ok" type="button" onclick="fecharDialogoSecreto()">OK</button>
-    </div>
-</div>
-
-<!-- MÚSICA -->
-<audio
-    id="musica"
-    src="Golden%2520Embers.mp3"
-    preload="auto"
-></audio>
-
-<!-- TELA INICIAL -->
-<section class="inicio" id="inicio">
-    <div class="nome">
-        zauan66
-    </div>
-
-    <button class="botao" type="button" onclick="abrirHistoria()">
-        Minha história
-    </button>
-
-    <button class="botao" type="button" onclick="abrirMencoes()">
-        Menções Honrosas
-    </button>
-</section>
-
-<!-- HISTÓRIA -->
-<section id="historia">
-    <div class="caixa">
-        <h2>História de zauan66</h2>
-
-        <div class="texto">
-            <br><br>
-
-            A História de zauan66
-
-            A origem do nome “Zauan” nasceu de uma pequena alteração em um nome comum, feita com um propósito simples, mas significativo: criar algo único, diferente e que pudesse representar uma identidade própria. Não era apenas um nome escolhido ao acaso. Era o começo de uma marca que, com o tempo, passaria a ser reconhecida dentro dos jogos.
-
-            Junto ao nome veio o “66”, acrescentado de maneira improvisada para que o nome pudesse ser aceito dentro da plataforma de jogos. O que inicialmente parecia apenas uma combinação feita por necessidade acabou se tornando parte essencial da identidade de Zauan. Com o passar do tempo, “Zauan 66” deixou de ser apenas um nome de usuário e passou a representar uma história, uma trajetória e tudo aquilo que ele havia construído.
-
-            Desde o início, Zauan nunca se contentou em ser apenas mais um jogador. Ele queria evoluir, aprender, melhorar suas habilidades e descobrir até onde poderia chegar. Cada partida era uma oportunidade para se aperfeiçoar. Cada dificuldade servia como um novo desafio. Ele buscava constantemente maneiras de se tornar melhor e, principalmente, de provar para si mesmo que aquilo que parecia impossível poderia, sim, ser alcançado.
-
-            Sua ambição não estava limitada apenas às habilidades dentro dos jogos. Zauan também desejava conquistar posições de destaque, assumir responsabilidades e ocupar cargos importantes. Ele queria fazer parte de algo maior. Quanto mais conquistava, mais queria evoluir. Para ele, alcançar um objetivo não significava o fim da jornada, mas o começo de uma nova meta.
-
-            Foi assim que Zauan construiu seu próprio caminho. Conquistas foram surgindo, amizades foram sendo criadas e momentos importantes passaram a fazer parte de sua história. Durante esse período, ele conheceu pessoas que se tornaram importantes em sua trajetória e viveu experiências que dificilmente seriam esquecidas.
-
-            Mas nenhuma história permanece igual para sempre.
-
-            Com o tempo, algumas coisas começaram a mudar. Pessoas que antes compartilhavam os mesmos objetivos passaram a tomar caminhos diferentes. Seus próprios amigos começaram a se posicionar contra o jogo, realizando ataques e tomando atitudes das quais Zauan não concordava.
-
-            E esse foi um dos momentos mais difíceis de sua trajetória.
-
-            Zauan era contra aqueles ataques. Ele não queria fazer parte daquela situação e não concordava com o caminho que seus antigos companheiros estavam seguindo. Mesmo tendo construído uma história naquele lugar, percebeu que permanecer significaria continuar em um ambiente que já não representava aquilo em que acreditava.
-
-            Então, tomou uma decisão.
-
-            Zauan saiu.
-
-            Seu reinado naquele jogo chegou ao fim, não porque tivesse sido derrotado, mas porque ele próprio decidiu encerrar aquele capítulo. Às vezes, continuar não significa permanecer no mesmo lugar. Às vezes, continuar significa ter coragem para partir e começar novamente.
-
-            Foi então que Zauan decidiu procurar um novo jogo, um novo ambiente e, talvez, uma nova história.
-
-            Ele entrou em um lugar completamente diferente, sem imaginar o que o aguardava. Para ele, era apenas uma mudança de jogo. Uma nova oportunidade para começar praticamente do zero.
-
-            Mas havia algo que Zauan ainda não sabia.
-
-            Naquele novo jogo estavam algumas das pessoas que, no futuro, se tornariam seus novos amigos.
-
-            Ele ainda não conhecia seus nomes, suas histórias ou o papel que cada um teria em sua vida dentro daquele novo universo. Não sabia que novas amizades seriam construídas, que novos momentos seriam vividos e que aquela simples decisão de mudar de jogo acabaria abrindo as portas para uma nova fase de sua trajetória.
-
-            O que parecia ser apenas o fim de uma era era, na verdade, o começo de outra.
-
-            O antigo reinado havia terminado.
-
-            Mas a história de Zauan 66 estava apenas começando.
-        </div>
-
-        <button class="voltar" type="button" onclick="voltar()">
-            ← Voltar
-        </button>
-    </div>
-</section>
-
-<!-- MENÇÕES HONROSAS -->
-<section id="mencoes">
-    <video
-        id="videoMencoes"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-    >
-        <source src="video.mp4" type="video/mp4">
-        Seu navegador não conseguiu carregar o vídeo.
-    </video>
-
-    <div class="conteudo-mencoes">
-        <h1>Menções Honrosas</h1>
-
-        <button class="voltar" type="button" onclick="voltarMencoes()">
-            ← Voltar
-        </button>
-    </div>
-</section>
-
-<script>
-
-/* LISTA DE MÚSICAS COM O MODO SECRETO */
-const musicas = [
-    {
-        nome: "Golden Embers",
-        arquivo: "Golden%2520Embers.mp3",
-        secreta: false
-    },
-    {
-        nome: "Música 2",
-        arquivo: "musica2.mp3",
-        secreta: false
-    },
-    {
-        nome: "⭐ Around the World (Secreta)",
-        arquivo: "around-the-world.mp3",
-        secreta: true
-    }
-];
-
-/* FRASES SINCRONIZADAS POR SEGUNDO */
-const falasSecretas = [
-    { tempo: 0.0, texto: "A magic melody" },
-    { tempo: 1.8, texto: "You want to" },
-    { tempo: 3.0, texto: "Sing with me" },
-    { tempo: 4.0, texto: "Just la-la-la-la-la" },
-    { tempo: 5.6, texto: "The music is the key" },
-    { tempo: 7.2, texto: "And now the night" },
-    { tempo: 8.5, texto: "Is gone" },
-    { tempo: 9.8, texto: "On and on" },
-    { tempo: 11.2, texto: "So deep" },
-    { tempo: 12.4, texto: "Inside of me" },
-    { tempo: 13.8, texto: "I long" },
-    { tempo: 14.8, texto: "To set it free" },
-    { tempo: 15.8, texto: "What to do" },
-    { tempo: 17.0, texto: "Just can't explain to you" },
-    { tempo: 18.2, texto: "I don't know" },
-    { tempo: 19.3, texto: "What to say" },
-    { tempo: 20.6, texto: "Oh, not another word" },
-    { tempo: 22.0, texto: "La-la-la-la-la" },
-    { tempo: 24.2, texto: "It goes around the world" },
-    { tempo: 26.0, texto: "Just la-la-la-la-la" },
-    { tempo: 28.0, texto: "It's all around the world" },
-    { tempo: 30.0, texto: "Just la-la-la-la-la" },
-    { tempo: 31.8, texto: "And everybody's singin'" },
-    { tempo: 33.6, texto: "La-la-la-la-la" },
-    { tempo: 35.5, texto: "And now the bells are ringin'" },
-    { tempo: 37.4, texto: "La-la-la-la-la" }
-];
-
-let musicaAtual = 0;
-
-const musica = document.getElementById("musica");
-const disco = document.getElementById("disco");
-const menuMusica = document.getElementById("menuMusica");
-const listaMusicas = document.getElementById("listaMusicas");
-const dialogoSecreto = document.getElementById("dialogoSecreto");
-const dialogoTexto = document.getElementById("dialogoTexto");
-
-/* CRIA A LISTA DE MÚSICAS */
-function criarListaMusicas() {
-    listaMusicas.innerHTML = "";
-
-    musicas.forEach(function(musicaItem, indice) {
-        const botao = document.createElement("button");
-        botao.className = "item-musica" + (musicaItem.secreta ? " secreta" : "");
-        botao.type = "button";
-        botao.textContent = musicaItem.nome;
-
-        botao.onclick = function() {
-            selecionarMusica(indice);
-        };
-
-        listaMusicas.appendChild(botao);
-    });
-
-    atualizarMusicaAtiva();
-}
-
-function atualizarMusicaAtiva() {
-    const itens = document.querySelectorAll(".item-musica");
-
-    itens.forEach(function(item, indice) {
-        if (indice === musicaAtual) {
-            item.classList.add("ativa");
-        } else {
-            item.classList.remove("ativa");
-        }
-    });
-}
-
-function alternarMenuMusica() {
-    menuMusica.classList.toggle("aberto");
-}
-
-function fecharMenuMusica() {
-    menuMusica.classList.remove("aberto");
-}
-
-function fecharDialogoSecreto() {
-    dialogoSecreto.classList.remove("visivel");
-}
-
-/* SELECIONA UMA MÚSICA */
-function selecionarMusica(indice) {
-    if (indice === musicaAtual) {
-        tocarOuPausar();
-        return;
-    }
-
-    musicaAtual = indice;
-    musica.src = musicas[musicaAtual].arquivo;
-    musica.load();
-
-    atualizarMusicaAtiva();
-
-    if (musicas[musicaAtual].secreta) {
-        dialogoSecreto.classList.add("visivel");
-        fecharMenuMusica();
-    } el
+        0 0 10px rg
