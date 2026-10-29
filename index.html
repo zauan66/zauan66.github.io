@@ -1,912 +1,372 @@
-<!DOCTYPE html>  <html lang="pt-BR">  <head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>zauan66</title>  <style>  
-  
-* {  
-    margin: 0;  
-    padding: 0;  
-    box-sizing: border-box;  
-}  
-  
-html,  
-body {  
-    width: 100%;  
-    min-height: 100%;  
-}  
-  
-body {  
-    font-family: Arial, sans-serif;  
-    min-height: 100vh;  
-    color: white;  
-  
-    background:  
-        radial-gradient(circle at 50% 20%, #12366b, transparent 35%),  
-        linear-gradient(135deg, #020617, #071a38, #020617);  
-}  
-  
-  
-/* =========================  
-   DISCO DE MÚSICA  
-========================= */  
-  
-.player-musica {  
-    position: fixed;  
-  
-    top: 20px;  
-    right: 20px;  
-  
-    width: 82px;  
-    height: 82px;  
-  
-    z-index: 9999;  
-  
-    cursor: pointer;  
-  
-    display: flex;  
-    align-items: center;  
-    justify-content: center;  
-}  
-  
-  
-/* =========================  
-   DISCO  
-========================= */  
-  
-.disco {  
-    width: 78px;  
-    height: 78px;  
-  
-    border-radius: 50%;  
-  
-    position: relative;  
-  
-    background:  
-        repeating-radial-gradient(  
-            circle at center,  
-            #050505 0px,  
-            #111 2px,  
-            #030303 4px,  
-            #151515 6px  
-        );  
-  
-    box-shadow:  
-        0 0 8px rgba(255,255,255,0.18),  
-        0 0 20px rgba(0,0,0,0.8);  
-  
-    overflow: hidden;  
-}  
-  
-  
-/* =========================  
-   BRILHO DO VINIL  
-========================= */  
-  
-.disco::before {  
-  
-    content: "";  
-  
-    position: absolute;  
-  
-    inset: 0;  
-  
-    border-radius: 50%;  
-  
-    background:  
-        linear-gradient(  
-            135deg,  
-            transparent 0%,  
-            transparent 42%,  
-            rgba(255,255,255,0.18) 48%,  
-            transparent 53%,  
-            transparent 100%  
-        );  
-  
-    pointer-events: none;  
-}  
-  
-  
-/* =========================  
-   CENTRO DO DISCO  
-========================= */  
-  
-.disco::after {  
-  
-    content: "";  
-  
-    position: absolute;  
-  
-    width: 20px;  
-    height: 20px;  
-  
-    top: 50%;  
-    left: 50%;  
-  
-    transform: translate(-50%, -50%);  
-  
-    border-radius: 50%;  
-  
-    background:  
-        radial-gradient(  
-            circle,  
-            #d4af37 0%,  
-            #d4af37 35%,  
-            #171717 38%,  
-            #050505 100%  
-        );  
-  
-    box-shadow:  
-        0 0 4px rgba(0,0,0,0.9);  
-}  
-  
-  
-/* =========================  
-   DISCO GIRANDO  
-========================= */  
-  
-.disco.tocando {  
-  
-    animation:  
-        girarDisco 2.5s linear infinite;  
-}  
-  
-  
-@keyframes girarDisco {  
-  
-    from {  
-        transform: rotate(0deg);  
-    }  
-  
-    to {  
-        transform: rotate(360deg);  
-    }  
-  
-}  
-  
-  
-/* =========================  
-   EFEITO AO PASSAR O MOUSE  
-========================= */  
-  
-.player-musica:hover .disco {  
-  
-    box-shadow:  
-        0 0 12px rgba(255,255,255,0.3),  
-        0 0 28px rgba(0,217,255,0.35);  
-}  
-  
-  
-/* =========================  
-   TELA INICIAL  
-========================= */  
-  
-.inicio {  
-    min-height: 100vh;  
-  
-    display: flex;  
-    flex-direction: column;  
-    align-items: center;  
-    justify-content: center;  
-  
-    text-align: center;  
-    padding: 20px;  
-}  
-  
-  
-/* =========================  
-   NOME  
-========================= */  
-  
-.nome {  
-    font-size: clamp(55px, 12vw, 100px);  
-    font-weight: 900;  
-  
-    letter-spacing: 2px;  
-  
-    margin-bottom: 45px;  
-  
-    text-shadow:  
-        0 0 30px rgba(70,160,255,0.35);  
-}  
-  
-  
-/* =========================  
-   BOTÕES NEON  
-========================= */  
-  
-.botao {  
-    position: relative;  
-  
-    width: 190px;  
-    height: 70px;  
-  
-    display: flex;  
-    align-items: center;  
-    justify-content: center;  
-  
-    border: none;  
-    border-radius: 18px;  
-  
-    color: white;  
-    text-decoration: none;  
-  
-    font-family: Arial, sans-serif;  
-    font-size: 18px;  
-    font-weight: bold;  
-  
-    background: #061225;  
-  
-    margin: 8px;  
-  
-    overflow: hidden;  
-  
-    isolation: isolate;  
-  
-    cursor: pointer;  
-  
-    box-shadow:  
-        0 0 10px rgba(0,217,255,0.25),  
-        inset 0 0 20px rgba(0,217,255,0.05);  
-  
-    transition: 0.25s;  
-}  
-  
-.botao::before {  
-    content: "";  
-  
-    position: absolute;  
-  
-    width: 180%;  
-    height: 180%;  
-  
-    background: conic-gradient(  
-        transparent 0deg,  
-        transparent 250deg,  
-        #00eaff 280deg,  
-        #ffffff 300deg,  
-        #00eaff 320deg,  
-        transparent 350deg  
-    );  
-  
-    animation: luzNeon 2.2s linear infinite;  
-  
-    z-index: -2;  
-}  
-  
-.botao::after {  
-    content: "";  
-  
-    position: absolute;  
-  
-    inset: 2px;  
-  
-    border-radius: 16px;  
-  
-    background: #061225;  
-  
-    z-index: -1;  
-}  
-  
-@keyframes luzNeon {  
-  
-    from {  
-        transform: rotate(0deg);  
-    }  
-  
-    to {  
-        transform: rotate(360deg);  
-    }  
-  
-}  
-  
-.botao:hover {  
-  
-    transform: scale(1.04);  
-  
-    box-shadow:  
-        0 0 15px #00d9ff,  
-        0 0 35px rgba(0,217,255,0.5);  
-}  
-  
-  
-/* =========================  
-   HISTÓRIA  
-========================= */  
-  
-#historia {  
-    display: none;  
-  
-    min-height: 100vh;  
-  
-    padding: 30px 20px;  
-}  
-  
-.caixa {  
-    max-width: 850px;  
-  
-    margin: 40px auto;  
-  
-    padding: 35px;  
-  
-    background: rgba(5,15,32,0.92);  
-  
-    border: 1px solid #2563eb;  
-  
-    border-radius: 24px;  
-}  
-  
-.caixa h2 {  
-  
-    color: #60a5fa;  
-  
-    font-size: 34px;  
-  
-    margin-bottom: 25px;  
-}  
-  
-.texto {  
-  
-    color: #d5deea;  
-  
-    font-size: 18px;  
-  
-    line-height: 1.9;  
-}  
-  
-  
-/* =========================  
-   MENÇÕES HONROSAS  
-========================= */  
-  
-#mencoes {  
-  
-    display: none;  
-  
-    position: relative;  
-  
-    width: 100%;  
-  
-    min-height: 100vh;  
-  
-    padding: 50px 20px;  
-  
-    text-align: center;  
-  
-    overflow: hidden;  
-  
-    align-items: center;  
-  
-    justify-content: center;  
-  
-    flex-direction: column;  
-  
-    background: #000;  
-}  
-  
-  
-/* =========================  
-   VÍDEO DE FUNDO  
-========================= */  
-  
-#mencoes video {  
-  
-    position: absolute;  
-  
-    top: 0;  
-    left: 0;  
-  
-    width: 100%;  
-    height: 100%;  
-  
-    object-fit: cover;  
-  
-    z-index: 0;  
-  
-    pointer-events: none;  
-}  
-  
-  
-/* =========================  
-   CAMADA ESCURA  
-========================= */  
-  
-#mencoes::before {  
-  
-    content: "";  
-  
-    position: absolute;  
-  
-    top: 0;  
-    left: 0;  
-  
-    width: 100%;  
-    height: 100%;  
-  
-    background: rgba(0, 0, 0, 0.30);  
-  
-    z-index: 1;  
-  
-    pointer-events: none;  
-}  
-  
-  
-/* =========================  
-   CONTEÚDO NA FRENTE  
-========================= */  
-  
-.conteudo-mencoes {  
-  
-    position: relative;  
-  
-    z-index: 2;  
-  
-    display: flex;  
-  
-    flex-direction: column;  
-  
-    align-items: center;  
-  
-    justify-content: center;  
-  
-    width: 100%;  
-}  
-  
-  
-/* =========================  
-   TÍTULO  
-========================= */  
-  
-#mencoes h1 {  
-  
-    color: #60a5fa;  
-  
-    font-size: 36px;  
-  
-    margin-bottom: 25px;  
-  
-    text-shadow:  
-        0 0 10px rgba(96,165,250,0.8),  
-        0 0 25px rgba(96,165,250,0.5);  
-}  
-  
-  
-/* =========================  
-   BOTÃO VOLTAR  
-========================= */  
-  
-.voltar {  
-  
-    margin-top: 30px;  
-  
-    padding: 12px 20px;  
-  
-    border: 0;  
-  
-    border-radius: 10px;  
-  
-    background: #2563eb;  
-  
-    color: white;  
-  
-    font-family: Arial, sans-serif;  
-  
-    font-weight: bold;  
-  
-    cursor: pointer;  
-  
-    transition: 0.25s;  
-  
-    position: relative;  
-  
-    z-index: 3;  
-}  
-  
-.voltar:hover {  
-  
-    transform: scale(1.05);  
-  
-    box-shadow:  
-        0 0 15px rgba(37,99,235,0.8);  
-}  
-  
-  
-/* =========================  
-   CELULAR  
-========================= */  
-  
-@media (max-width: 600px) {  
-  
-    .botao {  
-  
-        width: 180px;  
-        height: 65px;  
-  
-        font-size: 17px;  
-    }  
-  
-    .caixa {  
-  
-        padding: 25px;  
-    }  
-  
-    #mencoes h1 {  
-  
-        font-size: 30px;  
-    }  
-  
-    .player-musica {  
-  
-        top: 15px;  
-        right: 15px;  
-  
-        width: 65px;  
-        height: 65px;  
-    }  
-  
-    .disco {  
-  
-        width: 65px;  
-        height: 65px;  
-    }  
-  
-}  
-  
-</style>  </head>  <body>  <!-- =========================  
-     DISCO DE MÚSICA  
-========================= -->  <div  
-    class="player-musica"  
-    onclick="toggleMusica()"  
-    title="Tocar / Pausar música"  
->  <div  
-    class="disco"  
-    id="disco"  
-></div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>zauan66</title>
+<style>
 
-</div>  <!-- =========================  
-     MÚSICA  
-========================= -->  <audio
-id="musica"
-src="Golden%2520Embers.mp3"
-preload="auto"
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-> </audio>  
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
 
-<!-- =========================  
-     TELA INICIAL  
-========================= -->  <section class="inicio" id="inicio">  <div class="nome">  
-    zauan66  
-</div>  
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: white;
 
+    background:
+        radial-gradient(circle at 50% 20%, #12366b, transparent 35%),
+        linear-gradient(135deg, #020617, #071a38, #020617);
+}
 
-<button  
-    class="botao"  
-    type="button"  
-    onclick="abrirHistoria()"  
->  
-    Minha história  
-</button>  
+/* DISCO DE MÚSICA */
 
+.player-musica {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 82px;
+    height: 82px;
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-<button  
-    class="botao"  
-    type="button"  
-    onclick="abrirMencoes()"  
->  
-    Menções Honrosas  
-</button>
+.disco {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    position: relative;
 
-</section>  <!-- =========================  
-     HISTÓRIA  
-========================= -->  <section id="historia">  <div class="caixa">  
+    background:
+        repeating-radial-gradient(
+            circle at center,
+            #050505 0px,
+            #111 2px,
+            #030303 4px,
+            #151515 6px
+        );
 
-    <h2>  
-        História de zauan66  
-    </h2>  
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.18),
+        0 0 20px rgba(0,0,0,0.8);
 
+    overflow: hidden;
+}
 
-    <div class="texto">  
+.disco::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
 
-        <br><br>  
+    background:
+        linear-gradient(
+            135deg,
+            transparent 0%,
+            transparent 42%,
+            rgba(255,255,255,0.18) 48%,
+            transparent 53%,
+            transparent 100%
+        );
 
-        A História de zauan66  
+    pointer-events: none;
+}
 
-        A origem do nome “Zauan” nasceu de uma pequena alteração em um nome comum, feita com um propósito simples, mas significativo: criar algo único, diferente e que pudesse representar uma identidade própria. Não era apenas um nome escolhido ao acaso. Era o começo de uma marca que, com o tempo, passaria a ser reconhecida dentro dos jogos.  
+.disco::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
 
-        Junto ao nome veio o “66”, acrescentado de maneira improvisada para que o nome pudesse ser aceito dentro da plataforma de jogos. O que inicialmente parecia apenas uma combinação feita por necessidade acabou se tornando parte essencial da identidade de Zauan. Com o passar do tempo, “Zauan 66” deixou de ser apenas um nome de usuário e passou a representar uma história, uma trajetória e tudo aquilo que ele havia construído.  
+    background:
+        radial-gradient(
+            circle,
+            #d4af37 0%,
+            #d4af37 35%,
+            #171717 38%,
+            #050505 100%
+        );
 
-        Desde o início, Zauan nunca se contentou em ser apenas mais um jogador. Ele queria evoluir, aprender, melhorar suas habilidades e descobrir até onde poderia chegar. Cada partida era uma oportunidade para se aperfeiçoar. Cada dificuldade servia como um novo desafio. Ele buscava constantemente maneiras de se tornar melhor e, principalmente, de provar para si mesmo que aquilo que parecia impossível poderia, sim, ser alcançado.  
+    box-shadow:
+        0 0 4px rgba(0,0,0,0.9);
+}
 
-        Sua ambição não estava limitada apenas às habilidades dentro dos jogos. Zauan também desejava conquistar posições de destaque, assumir responsabilidades e ocupar cargos importantes. Ele queria fazer parte de algo maior. Quanto mais conquistava, mais queria evoluir. Para ele, alcançar um objetivo não significava o fim da jornada, mas o começo de uma nova meta.  
+.disco.tocando {
+    animation: girarDisco 2.5s linear infinite;
+}
 
-        Foi assim que Zauan construiu seu próprio caminho. Conquistas foram surgindo, amizades foram sendo criadas e momentos importantes passaram a fazer parte de sua história. Durante esse período, ele conheceu pessoas que se tornaram importantes em sua trajetória e viveu experiências que dificilmente seriam esquecidas.  
+@keyframes girarDisco {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
-        Mas nenhuma história permanece igual para sempre.  
+.player-musica:hover .disco {
+    box-shadow:
+        0 0 12px rgba(255,255,255,0.3),
+        0 0 28px rgba(0,217,255,0.35);
+}
 
-        Com o tempo, algumas coisas começaram a mudar. Pessoas que antes compartilhavam os mesmos objetivos passaram a tomar caminhos diferentes. Seus próprios amigos começaram a se posicionar contra o jogo, realizando ataques e tomando atitudes das quais Zauan não concordava.  
+/* MENU DE MÚSICA */
 
-        E esse foi um dos momentos mais difíceis de sua trajetória.  
+.menu-musica {
+    display: none;
+    position: fixed;
+    top: 115px;
+    right: 20px;
+    width: 280px;
+    padding: 20px;
+    z-index: 10000;
 
-        Zauan era contra aqueles ataques. Ele não queria fazer parte daquela situação e não concordava com o caminho que seus antigos companheiros estavam seguindo. Mesmo tendo construído uma história naquele lugar, percebeu que permanecer significaria continuar em um ambiente que já não representava aquilo em que acreditava.  
+    background: rgba(5, 15, 32, 0.97);
+    border: 1px solid #2563eb;
+    border-radius: 20px;
 
-        Então, tomou uma decisão.  
+    box-shadow:
+        0 0 25px rgba(0,217,255,0.25),
+        0 10px 40px rgba(0,0,0,0.7);
+}
 
-        Zauan saiu.  
+.menu-musica.aberto {
+    display: block;
+}
 
-        Seu reinado naquele jogo chegou ao fim, não porque tivesse sido derrotado, mas porque ele próprio decidiu encerrar aquele capítulo. Às vezes, continuar não significa permanecer no mesmo lugar. Às vezes, continuar significa ter coragem para partir e começar novamente.  
+.menu-musica h3 {
+    color: #60a5fa;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
 
-        Foi então que Zauan decidiu procurar um novo jogo, um novo ambiente e, talvez, uma nova história.  
+.lista-musicas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
 
-        Ele entrou em um lugar completamente diferente, sem imaginar o que o aguardava. Para ele, era apenas uma mudança de jogo. Uma nova oportunidade para começar praticamente do zero.  
+.item-musica {
+    padding: 12px;
+    border: 1px solid rgba(37, 99, 235, 0.5);
+    border-radius: 12px;
+    background: #061225;
+    color: #d5deea;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
 
-        Mas havia algo que Zauan ainda não sabia.  
+.item-musica:hover {
+    border-color: #00d9ff;
+    color: white;
+    box-shadow: 0 0 10px rgba(0,217,255,0.35);
+}
 
-        Naquele novo jogo estavam algumas das pessoas que, no futuro, se tornariam seus novos amigos.  
+.item-musica.ativa {
+    border-color: #00d9ff;
+    color: white;
+    background: rgba(0, 217, 255, 0.12);
+    box-shadow: 0 0 12px rgba(0,217,255,0.35);
+}
 
-        Ele ainda não conhecia seus nomes, suas histórias ou o papel que cada um teria em sua vida dentro daquele novo universo. Não sabia que novas amizades seriam construídas, que novos momentos seriam vividos e que aquela simples decisão de mudar de jogo acabaria abrindo as portas para uma nova fase de sua trajetória.  
+.controles-musica {
+    display: flex;
+    gap: 8px;
+}
 
-        O que parecia ser apenas o fim de uma era era, na verdade, o começo de outra.  
+.botao-musica {
+    flex: 1;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
 
-        O antigo reinado havia terminado.  
+.botao-musica:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 12px rgba(37,99,235,0.8);
+}
 
-        Mas a história de Zauan 66 estava apenas começando.  
+.botao-fechar {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    background: #111827;
+    color: #9ca3af;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
 
-    </div>  
+.botao-fechar:hover {
+    color: white;
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
 
+/* TELA INICIAL */
 
-    <button  
-        class="voltar"  
-        type="button"  
-        onclick="voltar()"  
-    >  
-        ← Voltar  
-    </button>  
+.inicio {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
 
-</div>
+.nome {
+    font-size: clamp(55px, 12vw, 100px);
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 45px;
+    text-shadow: 0 0 30px rgba(70,160,255,0.35);
+}
 
-</section>  <!-- =========================  
-     MENÇÕES HONROSAS  
-========================= -->  <section id="mencoes">  <video  
-    id="videoMencoes"  
-    autoplay  
-    muted  
-    loop  
-    playsinline  
-    preload="auto"  
->  
+/* BOTÕES NEON */
 
-    <source  
-        src="video.mp4"  
-        type="video/mp4"  
-    >  
+.botao {
+    position: relative;
+    width: 190px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 18px;
+    color: white;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    background: #061225;
+    margin: 8px;
+    overflow: hidden;
+    isolation: isolate;
+    cursor: pointer;
 
-    Seu navegador não conseguiu carregar o vídeo.  
+    box-shadow:
+        0 0 10px rgba(0,217,255,0.25),
+        inset 0 0 20px rgba(0,217,255,0.05);
 
-</video>  
+    transition: 0.25s;
+}
 
+.botao::before {
+    content: "";
+    position: absolute;
+    width: 180%;
+    height: 180%;
 
-<div class="conteudo-mencoes">  
+    background: conic-gradient(
+        transparent 0deg,
+        transparent 250deg,
+        #00eaff 280deg,
+        #ffffff 300deg,
+        #00eaff 320deg,
+        transparent 350deg
+    );
 
-    <h1>  
-        Menções Honrosas  
-    </h1>  
+    animation: luzNeon 2.2s linear infinite;
+    z-index: -2;
+}
 
+.botao::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 16px;
+    background: #061225;
+    z-index: -1;
+}
 
-    <button  
-        class="voltar"  
-        type="button"  
-        onclick="voltarMencoes()"  
-    >  
-        ← Voltar  
-    </button>  
+@keyframes luzNeon {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
-</div>
+.botao:hover {
+    transform: scale(1.04);
 
-</section>  <!-- =========================  
-     JAVASCRIPT  
-========================= -->  <script>  
-  
-  
-/* =========================  
-   MÚSICA  
-========================= */  
-  
-const musica =  
-    document.getElementById("musica");  
-  
-const disco =  
-    document.getElementById("disco");  
-  
-  
-function toggleMusica() {  
-  
-    if (musica.paused) {  
-  
-        musica.play()  
-            .then(function() {  
-  
-                disco.classList.add("tocando");  
-  
-            })  
-            .catch(function() {  
-  
-                console.log(  
-                    "Não foi possível iniciar a música."  
-                );  
-  
-            });  
-  
-    } else {  
-  
-        musica.pause();  
-  
-        disco.classList.remove("tocando");  
-  
-    }  
-  
-}  
-  
-  
-musica.addEventListener(  
-    "play",  
-    function() {  
-  
-        disco.classList.add("tocando");  
-  
-    }  
-);  
-  
-  
-musica.addEventListener(  
-    "pause",  
-    function() {  
-  
-        disco.classList.remove("tocando");  
-  
-    }  
-);  
-  
-  
-musica.addEventListener(  
-    "ended",  
-    function() {  
-  
-        disco.classList.remove("tocando");  
-  
-        musica.currentTime = 0;  
-  
-    }  
-);  
-  
-  
-  
-/* =========================  
-   ABRIR HISTÓRIA  
-========================= */  
-  
-function abrirHistoria() {  
-  
-    const inicio =  
-        document.getElementById("inicio");  
-  
-    const historia =  
-        document.getElementById("historia");  
-  
-    const mencoes =  
-        document.getElementById("mencoes");  
-  
-  
-    inicio.style.display = "none";  
-  
-    mencoes.style.display = "none";  
-  
-    historia.style.display = "block";  
-  
-  
-    window.scrollTo(0, 0);  
-  
-}  
-  
-  
-  
-/* =========================  
-   ABRIR MENÇÕES  
-========================= */  
-  
-function abrirMencoes() {  
-  
-    const inicio =  
-        document.getElementById("inicio");  
-  
-    const historia =  
-        document.getElementById("historia");  
-  
-    const mencoes =  
-        document.getElementById("mencoes");  
-  
-    const video =  
-        document.getElementById("videoMencoes");  
-  
-  
-    inicio.style.display = "none";  
-  
-    historia.style.display = "none";  
-  
-    mencoes.style.display = "flex";  
-  
-  
-    video.currentTime = 0;  
-  
-  
-    const tentativa =  
-        video.play();  
-  
-  
-    if (tentativa !== undefined) {  
-  
-        tentativa.catch(function() {  
-  
-        });  
-  
-    }  
-  
-  
-    window.scrollTo(0, 0);  
-  
-}  
-  
-  
-  
-/* =========================  
-   VOLTAR  
-========================= */  
-  
-function voltar() {  
-  
-    const historia =  
-        document.getElementById("historia");  
-  
-    const inicio =  
-        document.getElementById("inicio");  
-  
-  
-    historia.style.display = "none";  
-  
-    inicio.style.display = "flex";  
-  
-  
-    window.scrollTo(0, 0);  
-  
-}  
-  
-  
-  
-/* =========================  
-   VOLTAR DAS MENÇÕES  
-========================= */  
-  
-function voltarMencoes() {  
-  
-    const mencoes =  
-        document.getElementById("mencoes");  
-  
-    const inicio =  
-        document.getElementById("inicio");  
-  
-    const video =  
-        document.getElementById("videoMencoes");  
-  
-  
-    video.pause();  
-  
-    video.currentTime = 0;  
-  
-  
-    mencoes.style.display = "none";  
-  
-    inicio.style.display = "flex";  
-  
-  
-    window.scrollTo(0, 0);  
-  
-}  
-  
-</script>  </body>  </html>  
+    box-shadow:
+        0 0 15px #00d9ff,
+        0 0 35px rgba(0,217,255,0.5);
+}
+
+/* HISTÓRIA */
+
+#historia {
+    display: none;
+    min-height: 100vh;
+    padding: 30px 20px;
+}
+
+.caixa {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 35px;
+    background: rgba(5,15,32,0.92);
+    border: 1px solid #2563eb;
+    border-radius: 24px;
+}
+
+.caixa h2 {
+    color: #60a5fa;
+    font-size: 34px;
+    margin-bottom: 25px;
+}
+
+.texto {
+    color: #d5deea;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+/* MENÇÕES HONROSAS */
+
+#mencoes {
+    display: none;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 50px 20px;
+    text-align: center;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #000;
+}
+
+#mencoes video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cove
