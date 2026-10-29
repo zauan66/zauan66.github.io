@@ -13,8 +13,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html,
-body {
+html, body {
     width: 100%;
     min-height: 100%;
 }
@@ -23,7 +22,6 @@ body {
     font-family: Arial, sans-serif;
     min-height: 100vh;
     color: white;
-
     background:
         radial-gradient(circle at 50% 20%, #12366b, transparent 35%),
         linear-gradient(135deg, #020617, #071a38, #020617);
@@ -51,20 +49,14 @@ body {
     height: 78px;
     border-radius: 50%;
     position: relative;
-
-    background:
-        repeating-radial-gradient(
-            circle at center,
-            #050505 0px,
-            #111 2px,
-            #030303 4px,
-            #151515 6px
-        );
-
-    box-shadow:
-        0 0 8px rgba(255,255,255,0.18),
-        0 0 20px rgba(0,0,0,0.8);
-
+    background: repeating-radial-gradient(
+        circle at center,
+        #050505 0px,
+        #111 2px,
+        #030303 4px,
+        #151515 6px
+    );
+    box-shadow: 0 0 8px rgba(255,255,255,0.18), 0 0 20px rgba(0,0,0,0.8);
     overflow: hidden;
     pointer-events: none;
 }
@@ -74,17 +66,14 @@ body {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            transparent 0%,
-            transparent 42%,
-            rgba(255,255,255,0.18) 48%,
-            transparent 53%,
-            transparent 100%
-        );
-
+    background: linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 42%,
+        rgba(255,255,255,0.18) 48%,
+        transparent 53%,
+        transparent 100%
+    );
     pointer-events: none;
 }
 
@@ -97,18 +86,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #d4af37 0%,
-            #d4af37 35%,
-            #171717 38%,
-            #050505 100%
-        );
-
-    box-shadow:
-        0 0 4px rgba(0,0,0,0.9);
+    background: radial-gradient(circle, #d4af37 0%, #d4af37 35%, #171717 38%, #050505 100%);
+    box-shadow: 0 0 4px rgba(0,0,0,0.9);
     pointer-events: none;
 }
 
@@ -117,18 +96,12 @@ body {
 }
 
 @keyframes girarDisco {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .player-musica:hover .disco {
-    box-shadow:
-        0 0 12px rgba(255,255,255,0.3),
-        0 0 28px rgba(0,217,255,0.35);
+    box-shadow: 0 0 12px rgba(255,255,255,0.3), 0 0 28px rgba(0,217,255,0.35);
 }
 
 /* =========================
@@ -143,14 +116,10 @@ body {
     width: 280px;
     padding: 20px;
     z-index: 10000;
-
     background: rgba(5, 15, 32, 0.97);
     border: 1px solid #2563eb;
     border-radius: 20px;
-
-    box-shadow:
-        0 0 25px rgba(0,217,255,0.25),
-        0 10px 40px rgba(0,0,0,0.7);
+    box-shadow: 0 0 25px rgba(0,217,255,0.25), 0 10px 40px rgba(0,0,0,0.7);
 }
 
 .menu-musica.aberto {
@@ -247,7 +216,7 @@ body {
 }
 
 /* =========================
-   POPUP SECRETO (MEME DO VÍDEO)
+   POPUP SECRETO (MEME)
 ========================= */
 
 .dialogo-secreto {
@@ -301,7 +270,7 @@ body {
 .dialogo-icone {
     font-size: 34px;
     line-height: 1;
-    animation: pulsarEmoji 0.5s infinite alternate ease-in-out;
+    animation: pulsarEmoji 0.4s infinite alternate ease-in-out;
 }
 
 @keyframes pulsarEmoji {
@@ -332,6 +301,11 @@ body {
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.dialogo-ok:active {
+    background: #cce4f7;
+    border-color: #005499;
 }
 
 /* =========================
@@ -391,11 +365,7 @@ body {
     overflow: hidden;
     isolation: isolate;
     cursor: pointer;
-
-    box-shadow:
-        0 0 10px rgba(0,217,255,0.25),
-        inset 0 0 20px rgba(0,217,255,0.05);
-
+    box-shadow: 0 0 10px rgba(0,217,255,0.25), inset 0 0 20px rgba(0,217,255,0.05);
     transition: 0.25s;
 }
 
@@ -404,7 +374,6 @@ body {
     position: absolute;
     width: 180%;
     height: 180%;
-
     background: conic-gradient(
         transparent 0deg,
         transparent 250deg,
@@ -413,7 +382,6 @@ body {
         #00eaff 320deg,
         transparent 350deg
     );
-
     animation: luzNeon 2.2s linear infinite;
     z-index: -2;
     pointer-events: none;
@@ -430,19 +398,13 @@ body {
 }
 
 @keyframes luzNeon {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .botao:hover {
     transform: scale(1.04);
-    box-shadow:
-        0 0 15px #00d9ff,
-        0 0 35px rgba(0,217,255,0.5);
+    box-shadow: 0 0 15px #00d9ff, 0 0 35px rgba(0,217,255,0.5);
 }
 
 /* =========================
@@ -531,9 +493,7 @@ body {
     color: #60a5fa;
     font-size: 36px;
     margin-bottom: 25px;
-    text-shadow:
-        0 0 10px rgba(96,165,250,0.8),
-        0 0 25px rgba(96,165,250,0.5);
+    text-shadow: 0 0 10px rgba(96,165,250,0.8), 0 0 25px rgba(96,165,250,0.5);
 }
 
 .voltar {
@@ -553,47 +513,16 @@ body {
 
 .voltar:hover {
     transform: scale(1.05);
-    box-shadow:
-        0 0 15px rgba(37,99,235,0.8);
+    box-shadow: 0 0 15px rgba(37,99,235,0.8);
 }
 
-/* =========================
-   CELULAR
-========================= */
-
 @media (max-width: 600px) {
-    .botao {
-        width: 180px;
-        height: 65px;
-        font-size: 17px;
-    }
-
-    .caixa {
-        padding: 25px;
-    }
-
-    #mencoes h1 {
-        font-size: 30px;
-    }
-
-    .player-musica {
-        top: 15px;
-        right: 15px;
-        width: 65px;
-        height: 65px;
-    }
-
-    .disco {
-        width: 65px;
-        height: 65px;
-    }
-
-    .menu-musica {
-        top: 90px;
-        right: 15px;
-        left: 15px;
-        width: auto;
-    }
+    .botao { width: 180px; height: 65px; font-size: 17px; }
+    .caixa { padding: 25px; }
+    #mencoes h1 { font-size: 30px; }
+    .player-musica { top: 15px; right: 15px; width: 65px; height: 65px; }
+    .disco { width: 65px; height: 65px; }
+    .menu-musica { top: 90px; right: 15px; left: 15px; width: auto; }
 }
 
 </style>
@@ -601,40 +530,18 @@ body {
 <body>
 
 <!-- DISCO DE MÚSICA -->
-<div
-    class="player-musica"
-    onclick="alternarMenuMusica()"
-    title="Abrir opções de música"
->
-    <div
-        class="disco"
-        id="disco"
-    ></div>
+<div class="player-musica" onclick="alternarMenuMusica()" title="Abrir opções de música">
+    <div class="disco" id="disco"></div>
 </div>
 
 <!-- MENU DE MÚSICA -->
 <div class="menu-musica" id="menuMusica">
     <h3>Músicas</h3>
-
     <div class="lista-musicas" id="listaMusicas"></div>
-
     <div class="controles-musica">
-        <button
-            class="botao-musica"
-            type="button"
-            onclick="tocarOuPausar()"
-        >
-            Tocar / Pausar
-        </button>
+        <button class="botao-musica" type="button" onclick="tocarOuPausar()">Tocar / Pausar</button>
     </div>
-
-    <button
-        class="botao-fechar"
-        type="button"
-        onclick="fecharMenuMusica()"
-    >
-        Fechar
-    </button>
+    <button class="botao-fechar" type="button" onclick="fecharMenuMusica()">Fechar</button>
 </div>
 
 <!-- POPUP SECRETO (MEME DO VÍDEO) -->
@@ -645,19 +552,15 @@ body {
     </div>
     <div class="dialogo-corpo">
         <div class="dialogo-icone" id="dialogoIcone">🐥</div>
-        <div class="dialogo-texto" id="dialogoTexto">...</div>
+        <div class="dialogo-texto" id="dialogoTexto">A magic melody</div>
     </div>
     <div class="dialogo-rodape">
-        <button class="dialogo-ok" type="button" onclick="fecharDialogoSecreto()">OK</button>
+        <button class="dialogo-ok" type="button" onclick="avancarFraseSecreta()">OK</button>
     </div>
 </div>
 
 <!-- MÚSICA -->
-<audio
-    id="musica"
-    src="Golden%2520Embers.mp3"
-    preload="auto"
-></audio>
+<audio id="musica" src="Golden%2520Embers.mp3" preload="auto"></audio>
 
 <!-- TELA INICIAL -->
 <section class="inicio" id="inicio">
@@ -665,19 +568,11 @@ body {
         zauan66
     </div>
 
-    <button
-        class="botao"
-        type="button"
-        onclick="abrirHistoria()"
-    >
+    <button class="botao" type="button" onclick="abrirHistoria()">
         Minha história
     </button>
 
-    <button
-        class="botao"
-        type="button"
-        onclick="abrirMencoes()"
-    >
+    <button class="botao" type="button" onclick="abrirMencoes()">
         Menções Honrosas
     </button>
 </section>
@@ -685,95 +580,44 @@ body {
 <!-- HISTÓRIA -->
 <section id="historia">
     <div class="caixa">
-        <h2>
-            História de zauan66
-        </h2>
-
+        <h2>História de zauan66</h2>
         <div class="texto">
             <br><br>
-
             A História de zauan66<br><br>
-
             A origem do nome “Zauan” nasceu de uma pequena alteração em um nome comum, feita com um propósito simples, mas significativo: criar algo único, diferente e que pudesse representar uma identidade própria. Não era apenas um nome escolhido ao acaso. Era o começo de uma marca que, com o tempo, passaria a ser reconhecida dentro dos jogos.<br><br>
-
             Junto ao nome veio o “66”, acrescentado de maneira improvisada para que o nome pudesse ser aceito dentro da plataforma de jogos. O que inicialmente parecia apenas uma combinação feita por necessidade acabou se tornando parte essencial da identidade de Zauan. Com o passar do tempo, “Zauan 66” deixou de ser apenas um nome de usuário e passou a representar uma história, uma trajetória e tudo aquilo que ele havia construído.<br><br>
-
             Desde o início, Zauan nunca se contentou em ser apenas mais um jogador. Ele queria evoluir, aprender, melhorar suas habilidades e descobrir até onde poderia chegar. Cada partida era uma oportunidade para se aperfeiçoar. Cada dificuldade servia como um novo desafio. Ele buscava constantemente maneiras de se tornar melhor e, principalmente, de provar para si mesmo que aquilo que parecia impossível poderia, sim, ser alcançado.<br><br>
-
             Sua ambição não estava limitada apenas às habilidades dentro dos jogos. Zauan também desejava conquistar posições de destaque, assumir responsabilidades e ocupar cargos importantes. Ele queria fazer parte de algo maior. Quanto mais conquistava, mais queria evoluir. Para ele, alcançar um objetivo não significava o fim da jornada, mas o começo de uma nova meta.<br><br>
-
             Foi assim que Zauan construiu seu próprio caminho. Conquistas foram surgindo, amizades foram sendo criadas e momentos importantes passaram a fazer parte de sua história. Durante esse período, ele conheceu pessoas que se tornaram importantes em sua trajetória e viveu experiências que dificilmente seriam esquecidas.<br><br>
-
             Mas nenhuma história permanece igual para sempre.<br><br>
-
             Com o tempo, algumas coisas começaram a mudar. Pessoas que antes compartilhavam os mesmos objetivos passaram a tomar caminhos diferentes. Seus próprios amigos começaram a se posicionar contra o jogo, realizando ataques e tomando atitudes das quais Zauan não concordava.<br><br>
-
             E esse foi um dos momentos mais difíceis de sua trajetória.<br><br>
-
             Zauan era contra aqueles ataques. Ele não queria fazer parte daquela situação e não concordava com o caminho que seus antigos companheiros estavam seguindo. Mesmo tendo construído uma história naquele lugar, percebeu que permanecer significaria continuar em um ambiente que já não representava aquilo em que acreditava.<br><br>
-
             Então, tomou uma decisão.<br><br>
-
             Zauan saiu.<br><br>
-
             Seu reinado naquele jogo chegou ao fim, não porque tivesse sido derrotado, mas porque ele próprio decidiu encerrar aquele capítulo. Às vezes, continuar não significa permanecer no mesmo lugar. Às vezes, continuar significa ter coragem para partir e começar novamente.<br><br>
-
             Foi então que Zauan decidiu procurar um novo jogo, um novo ambiente e, talvez, uma nova história.<br><br>
-
             Ele entrou em um lugar completamente diferente, sem imaginar o que o aguardava. Para ele, era apenas uma mudança de jogo. Uma nova oportunidade para começar praticamente do zero.<br><br>
-
             Mas havia algo que Zauan ainda não sabia.<br><br>
-
             Naquele novo jogo estavam algumas das pessoas que, no futuro, se tornariam seus novos amigos.<br><br>
-
             Ele ainda não conhecia seus nomes, suas histórias ou o papel que cada um teria em sua vida dentro daquele novo universo. Não sabia que novas amizades seriam construídas, que novos momentos seriam vividos e que aquela simples decisão de mudar de jogo acabaria abrindo as portas para uma nova fase de sua trajetória.<br><br>
-
             O que parecia ser apenas o fim de uma era era, na verdade, o começo de outra.<br><br>
-
             O antigo reinado havia terminado.<br><br>
-
             Mas a história de Zauan 66 estava apenas começando.
         </div>
-
-        <button
-            class="voltar"
-            type="button"
-            onclick="voltar()"
-        >
-            ← Voltar
-        </button>
+        <button class="voltar" type="button" onclick="voltar()">← Voltar</button>
     </div>
 </section>
 
 <!-- MENÇÕES HONROSAS -->
 <section id="mencoes">
-    <video
-        id="videoMencoes"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-    >
-        <source
-            src="video.mp4"
-            type="video/mp4"
-        >
+    <video id="videoMencoes" autoplay muted loop playsinline preload="auto">
+        <source src="video.mp4" type="video/mp4">
         Seu navegador não conseguiu carregar o vídeo.
     </video>
-
     <div class="conteudo-mencoes">
-        <h1>
-            Menções Honrosas
-        </h1>
-
-        <button
-            class="voltar"
-            type="button"
-            onclick="voltarMencoes()"
-        >
-            ← Voltar
-        </button>
+        <h1>Menções Honrosas</h1>
+        <button class="voltar" type="button" onclick="voltarMencoes()">← Voltar</button>
     </div>
 </section>
 
@@ -810,8 +654,9 @@ const musicaSecretaItem = {
 let segredoDesbloqueado = false;
 let contagemCliquesNome = 0;
 let timerCliquesNome = null;
+let indiceFalaAtual = 0;
 
-/* SINCRONIZAÇÃO DAS FRASES DO MEME */
+/* TODAS AS FRASES SINCRONIZADAS DO VÍDEO */
 const falasSecretas = [
     { tempo: 0.0, texto: "A magic melody" },
     { tempo: 1.8, texto: "You want to" },
@@ -851,7 +696,7 @@ const dialogoSecreto = document.getElementById("dialogoSecreto");
 const dialogoTexto = document.getElementById("dialogoTexto");
 const tituloNome = document.getElementById("tituloNome");
 
-/* CHAVE SECRETA: 3 CLIQUES NO NOME "zauan66" */
+/* 3 CLIQUES NO NOME "zauan66" */
 function clicarNomeZauan() {
     contagemCliquesNome++;
     clearTimeout(timerCliquesNome);
@@ -873,15 +718,11 @@ function desbloquearMusicaSecreta() {
     musicas.push(musicaSecretaItem);
     criarListaMusicas();
 
-    if (tituloNome) {
-        tituloNome.classList.add("desbloqueado");
-    }
-    if (menuMusica) {
-        menuMusica.classList.add("aberto");
-    }
+    if (tituloNome) tituloNome.classList.add("desbloqueado");
+    if (menuMusica) menuMusica.classList.add("aberto");
 }
 
-/* CRIA A LISTA DE MÚSICAS */
+/* LISTA DE MÚSICAS */
 function criarListaMusicas() {
     listaMusicas.innerHTML = "";
 
@@ -903,7 +744,6 @@ function criarListaMusicas() {
 
 function atualizarMusicaAtiva() {
     const itens = document.querySelectorAll(".item-musica");
-
     itens.forEach(function(item, indice) {
         if (indice === musicaAtual) {
             item.classList.add("ativa");
@@ -921,11 +761,22 @@ function fecharMenuMusica() {
     menuMusica.classList.remove("aberto");
 }
 
+/* CLIQUE NO X: FECHA DIRETO */
 function fecharDialogoSecreto() {
     dialogoSecreto.classList.remove("visivel");
 }
 
-/* SELEÇÃO E CONTROLE DE MÚSICA */
+/* CLIQUE NO OK: AVANÇA PARA A PRÓXIMA PARTE / FRASE */
+function avancarFraseSecreta() {
+    indiceFalaAtual = (indiceFalaAtual + 1) % falasSecretas.length;
+    dialogoTexto.textContent = falasSecretas[indiceFalaAtual].texto;
+    musica.currentTime = falasSecretas[indiceFalaAtual].tempo;
+    if (musica.paused) {
+        tocarMusica();
+    }
+}
+
+/* SELECIONA MÚSICA */
 function selecionarMusica(indice) {
     if (indice === musicaAtual) {
         tocarOuPausar();
@@ -939,6 +790,8 @@ function selecionarMusica(indice) {
     atualizarMusicaAtiva();
 
     if (musicas[musicaAtual].secreta) {
+        indiceFalaAtual = 0;
+        dialogoTexto.textContent = falasSecretas[0].texto;
         dialogoSecreto.classList.add("visivel");
         fecharMenuMusica();
     } else {
@@ -965,27 +818,28 @@ function tocarMusica() {
             }
         })
         .catch(function() {
-            console.log("Não foi possível iniciar a música.");
+            console.log("Aguardando toque para áudio.");
         });
 }
 
-/* SINCRONIZAÇÃO DAS LETRAS */
+/* SINCRONIZA COM A MÚSICA EM TEMPO REAL */
 musica.addEventListener("timeupdate", function() {
-    if (!musicas[musicaAtual].secreta) return;
+    if (!musicas[musicaAtual] || !musicas[musicaAtual].secreta) return;
 
     const tempoAtual = musica.currentTime;
-    let textoEncontrado = falasSecretas[0].texto;
+    let novoIndice = 0;
 
     for (let i = 0; i < falasSecretas.length; i++) {
         if (tempoAtual >= falasSecretas[i].tempo) {
-            textoEncontrado = falasSecretas[i].texto;
+            novoIndice = i;
         } else {
             break;
         }
     }
 
-    if (dialogoTexto.textContent !== textoEncontrado) {
-        dialogoTexto.textContent = textoEncontrado;
+    if (indiceFalaAtual !== novoIndice) {
+        indiceFalaAtual = novoIndice;
+        dialogoTexto.textContent = falasSecretas[novoIndice].texto;
     }
 });
 
@@ -1003,67 +857,43 @@ musica.addEventListener("ended", function() {
     musica.currentTime = 0;
 });
 
-/* ABRIR HISTÓRIA */
+/* TELAS HISTÓRIA E MENÇÕES */
 function abrirHistoria() {
-    const inicio = document.getElementById("inicio");
-    const historia = document.getElementById("historia");
-    const mencoes = document.getElementById("mencoes");
-
-    inicio.style.display = "none";
-    mencoes.style.display = "none";
-    historia.style.display = "block";
-
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("mencoes").style.display = "none";
+    document.getElementById("historia").style.display = "block";
     window.scrollTo(0, 0);
 }
 
-/* ABRIR MENÇÕES */
 function abrirMencoes() {
-    const inicio = document.getElementById("inicio");
-    const historia = document.getElementById("historia");
-    const mencoes = document.getElementById("mencoes");
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("historia").style.display = "none";
+    document.getElementById("mencoes").style.display = "flex";
+
     const video = document.getElementById("videoMencoes");
-
-    inicio.style.display = "none";
-    historia.style.display = "none";
-    mencoes.style.display = "flex";
-
     video.currentTime = 0;
-
     const tentativa = video.play();
-
     if (tentativa !== undefined) {
         tentativa.catch(function() {});
     }
-
     window.scrollTo(0, 0);
 }
 
-/* VOLTAR */
 function voltar() {
-    const historia = document.getElementById("historia");
-    const inicio = document.getElementById("inicio");
-
-    historia.style.display = "none";
-    inicio.style.display = "flex";
-
+    document.getElementById("historia").style.display = "none";
+    document.getElementById("inicio").style.display = "flex";
     window.scrollTo(0, 0);
 }
 
 function voltarMencoes() {
-    const mencoes = document.getElementById("mencoes");
-    const inicio = document.getElementById("inicio");
     const video = document.getElementById("videoMencoes");
-
     video.pause();
     video.currentTime = 0;
-
-    mencoes.style.display = "none";
-    inicio.style.display = "flex";
-
+    document.getElementById("mencoes").style.display = "none";
+    document.getElementById("inicio").style.display = "flex";
     window.scrollTo(0, 0);
 }
 
-/* INICIA A LISTA */
 criarListaMusicas();
 
 </script>
